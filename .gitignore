@@ -1,0 +1,24 @@
+# vim: ft=config
+
+.mpd/playlists
+.mpd/mpdstate
+.mpd/mpd.pid
+.mpd/mpd.db
+.mpd/mpd.log
+.ncmpcpp/error.log
+
+.vim/.netrwhist
+
+*.swp
+
+# symlinks
+.config/mpv/mpv
+.vim/bundle/vim-template/templates/=template=GNUmakefile
+.vim/bundle/vim-template/templates/=template=.cxx
+.vim/bundle/vim-template/templates/=template=.m
+.vim/bundle/vim-template/templates/=template=.cpp
+.vim/bundle/vim-template/templates/=template=.c++
+.vim/bundle/vim-template/templates/=template=.cc
+.vim/bundle/vim-template/templates/=template=CMakeLists.txt
+.vim/bundle/vim-template/templates/=template=.mk
+.vim/bundle/vim-template/templates/=template=.mm

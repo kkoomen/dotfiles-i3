@@ -1,0 +1,29 @@
+[submodule "ack"]
+    path = .vim/bundle/ack.vim
+    url = https://github.com/mileszs/ack.vim
+    branch = master
+
+[submodule "ctrlp"]
+    path = .vim/bundle/ctrlp.vim
+    url = https://github.com/ctrlpvim/ctrlp.vim
+    branch = master
+
+[submodule "editorconfig-vim"]
+    path = .vim/bundle/editorconfig-vim
+    url = https://github.com/editorconfig/editorconfig-vim
+    branch = master
+
+[submodule "indentLine"]
+    path = .vim/bundle/indentLine
+    url = https://github.com/Yggdroot/indentLine
+    branch = master
+
+[submodule "vim-buftabline"]
+    path = .vim/bundle/vim-buftabline
+    url = https://github.com/ap/vim-buftabline
+    branch = master
+
+[submodule "vim-tabular"]
+    path = .vim/bundle/tabular
+    url = https://github.com/godlygeek/tabular
+    branch = master

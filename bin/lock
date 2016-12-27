@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+scrot -e 'convert -blur 0x4 -modulate 50,0,0 $f ~/lockbg.png; rm $f'
+i3lock -i ~/lockbg.png
+rm ~/lockbg.png
