@@ -9,6 +9,7 @@ NC='\033[0m'
 
 # list of files to symlink
 FILES=(
+  # files to symlink
   .bashrc
   .bash_aliases
   .bash_functions
@@ -23,13 +24,14 @@ FILES=(
   .config/termite/config
   .weechat/weechat.conf
   .weechat/buffers.conf
+  .mpd/mpd.conf
+  .ncmpcpp/config
   .ssh/id_rsa.pub
+  .config/mpv/mpv.conf
   .gitconfig
 
-  .mpd/
+  # directories to symlink
   .vim/
-  .ncmpcpp/
-  .config/mpv/
 )
 
 # files that must exist
@@ -44,7 +46,9 @@ TOUCH_FILES=(
 TOUCH_DIRS=(
   .ssh/
   .weechat/
+  .ncmpcpp/
   .mpd/playlists/
+  .config/mpv/
   .config/gtk-3.0/
   .config/i3/
   .config/termite/
@@ -69,7 +73,7 @@ done
 # touch directories
 for directory in "${TOUCH_DIRS[@]}"; do
   if [[ ! -d ~/$directory ]]; then
-    echo "[Setup] touching directory: ~/$directory"
+    printf "[Setup] touching directory: ${ORANGE}~/$directory${NC}\n"
     mkdir -p ~/$directory
   fi
 done
@@ -77,7 +81,7 @@ done
 # touch files
 for file in "${TOUCH_FILES[@]}"; do
   if [[ ! -e ~/$file ]]; then
-    echo "[Setup] touching file: $file"
+    printf "[Setup] touching file: ${ORANGE}$file${NC}\n"
     touch ~/$file
   fi
 done

@@ -1,12 +1,5 @@
 # vim: ft=config
 
-.mpd/playlists
-.mpd/mpdstate
-.mpd/mpd.pid
-.mpd/mpd.db
-.mpd/mpd.log
-.ncmpcpp/error.log
-
 .vim/.netrwhist
 
 *.swp
