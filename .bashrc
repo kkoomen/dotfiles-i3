@@ -105,9 +105,10 @@ export PS1="[\u:\[$(tput sgr0)\]\[\033[38;5;131m\]\W\[$(tput sgr0)\]\[\033[38;5;
 
 # ssh agent
 if [ ! -S ~/.ssh/ssh_auth_sock ]; then
-    eval `ssh-agent` &> /dev/null
-    ln -sf "$SSH_AUTH_SOCK" ~/.ssh/ssh_auth_sock
+  eval `ssh-agent`
+  ln -sf "$SSH_AUTH_SOCK" ~/.ssh/ssh_auth_sock
 fi
+ssh-add -l > /dev/null || ssh-add
 
 # PATH exporting
 export PATH="$PATH:$HOME/.rvm/bin":"$HOME/.composer/vendor/bin/":"$HOME/go/bin"
