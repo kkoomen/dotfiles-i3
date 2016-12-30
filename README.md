@@ -37,7 +37,7 @@ Installing the icons:
 
 Now open `lxappearance` and set the theme.
 
-# Fixes
+# Bug fixes
 
 ### Nautilus
 
