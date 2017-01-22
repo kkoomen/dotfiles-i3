@@ -21,6 +21,7 @@ set lazyredraw           " will buffer screen updates instead of updating all th
 set clipboard=unnamed    " enable clipboard
 set autoread             " Set to auto read when a file is changed from the outside
 set so=7                 " minimal number of screen lines to keep above and below the cursor when scrolling
+set colorcolumn=80       " highlight the 80th column
 
 " Search
 set ignorecase           " case insensitive
