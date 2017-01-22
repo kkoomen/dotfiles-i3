@@ -10,7 +10,7 @@ packages needed: `sudo apt-get install termite curl wget vim vim-gtk network-man
 
 python packages needed:
 
-- python-mp2 (required by mpd_status from py3status)
+- `python-mp2` (required by mpd_status from py3status)
 
 ### Install i3
 
