@@ -1,7 +1,6 @@
 # GENERAL
 alias size='du -hs'
 alias mkdir='mkdir -pv'
-alias htdocs='cd /srv/http/'
 alias vi='vim'
 alias ls='ls -l --color=auto'
 alias sl='ls'
