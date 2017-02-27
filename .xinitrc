@@ -15,5 +15,7 @@ xset r rate 220 65
 xset -dpms
 xset s off
 
+xrandr --dpi 180
+
 nm-applet &
 exec i3

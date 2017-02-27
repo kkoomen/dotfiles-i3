@@ -46,10 +46,25 @@ the desktop window with the following command:
 
 `$ gsettings set org.gnome.desktop.background show-desktop-icons false`
 
-### disable lightdm
+### Disable lightdm
+
+This is so that you get a tty login instead the default ubuntu login
 
 1. `sudo vim /etc/default/grub`
 2. change `GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"` to `GRUB_CMDLINE_LINUX_DEFAULT="text"`.
 3. run `sudo update-grub`.
 4. `sudo systemctl enable multi-user.target --force`
 5. `sudo systemctl set-default multi-user.target`
+
+### Set scaling
+
+Add the following to `/etc/profile.d/qt-hidpi.sh`
+
+```
+export QT_AUTO_SCREEN_SCALE_FACTOR=0
+export QT_SCALE_FACTOR=1.8
+export GDK_SCALE=1.8
+export GDK_DPI_SCALE=1.8
+```
+
+Don't forget to add `xrandr --dpi 180` to your `~/.xinitrc`.
