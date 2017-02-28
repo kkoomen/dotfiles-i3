@@ -6,7 +6,7 @@
 
 # System Installation
 
-packages needed: `sudo apt-get install termite curl wget vim vim-gtk network-manager network-manager-openvpn-gnome py3status python-pip mpv pavucontrol`
+packages needed: `sudo apt-get install termite curl wget vim network-manager network-manager-openvpn-gnome py3status python-pip mpv pavucontrol`
 
 python packages needed:
 
