@@ -50,12 +50,13 @@ export GDK_DPI_SCALE=1.8
 
 Don't forget to add `xrandr --dpi 180` to your `~/.xinitrc`.
 
-Firefox & Thunderbird:<br/>
+Firefox
 - Go to `about:config` in Firefox
 - Set `layout.css.devPixelsPerPx` to `1.5`
 
-For thunderbird go to `Edit → Preferences → Advanced → Config editor` and then
-insert `1.5` in `layout.css.devPixelsPerPx`
+Thunderbird
+- Go to `Edit → Preferences → Advanced → Config editor`
+- Set `layout.css.devPixelsPerPx` to `1.5`
 
 # Bug fixes
 
