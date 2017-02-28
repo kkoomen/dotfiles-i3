@@ -37,6 +37,16 @@ Installing the icons:
 
 Now open `lxappearance` and set the theme.
 
+### Disable lightdm
+
+This is so that you get a tty login instead the default ubuntu login
+
+1. `sudo vim /etc/default/grub`
+2. change `GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"` to `GRUB_CMDLINE_LINUX_DEFAULT="text"`.
+3. run `sudo update-grub`.
+4. `sudo systemctl enable multi-user.target --force`
+5. `sudo systemctl set-default multi-user.target`
+
 ### Set correct DPI
 
 Add the following to `/etc/profile.d/qt-hidpi.sh`
@@ -66,13 +76,3 @@ Nautilus opens on default two windows. The nautilus window and a second desktop 
 the desktop window with the following command:
 
 `$ gsettings set org.gnome.desktop.background show-desktop-icons false`
-
-### Disable lightdm
-
-This is so that you get a tty login instead the default ubuntu login
-
-1. `sudo vim /etc/default/grub`
-2. change `GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"` to `GRUB_CMDLINE_LINUX_DEFAULT="text"`.
-3. run `sudo update-grub`.
-4. `sudo systemctl enable multi-user.target --force`
-5. `sudo systemctl set-default multi-user.target`
