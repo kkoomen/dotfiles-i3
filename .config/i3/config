@@ -144,7 +144,7 @@ bindsym $mod+l exec lock
 
 # Colors
 # name                  #border  #bg      #text
-client.focused          #202020  #a84a4a  #ffffff
+client.focused          #202020  #7b6064  #ffffff
 client.unfocused        #202020  #202020  #F3F4F5
 client.focused_inactive #202020  #202020  #F3F4F5
 client.urgent           #202020  #202020  #F3F4F5
@@ -161,7 +161,7 @@ bar {
     background  #292929
 
     #name              #border #bg     #text
-    focused_workspace  #262626 #a84a4a #ffffff
+    focused_workspace  #262626 #7b6064 #ffffff
     active_workspace   #262626 #202020 #959595
     inactive_workspace #262626 #202020 #959595
     urgent_workspace   #262626 #202020 #959595
