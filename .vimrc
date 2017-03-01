@@ -54,8 +54,11 @@ let python_highlight_all = 1
 let python_highlight_space_errors = 0
 
 " color scheme
-let g:gruvbox_bold = 0
 set background=dark
+let g:gruvbox_bold = 0
+let g:gruvbox_termcolors=16
+let g:gruvbox_hls_cursor="green"
+let g:gruvbox_invert_selection=0
 colorscheme gruvbox
 
 " use vim defaults instead of vi
@@ -91,16 +94,6 @@ let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.tpl,*.twig,*.htm,*.blade.ph
 " Templating
 let g:username = "Kim Koomen"
 let g:email = 'koomen@protonail.com'
-
-" Airline
-"set laststatus=2
-"let g:airline_theme                      = 'mystery'
-"let g:airline_left_sep                   = ' '
-"let g:airline_right_sep                  = ' '
-"let g:airline#extensions#tabline#enabled = 1
-"let g:airline#extensions#hunks#enabled   = 1
-"let g:airline#extensions#branch#enabled  = 0
-"autocmd VimEnter * :AirlineRefresh
 
 " ctrlp
 let g:ctrlp_use_caching  = 0
