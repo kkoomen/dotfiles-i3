@@ -6,7 +6,7 @@ alias ls='ls -l --color=auto'
 alias sl='ls'
 alias tree='tree -C'
 alias pcinfo='inxi -Fx'
-alias calc="bc -l"
+alias calc='bc -l'
 alias clipboard="xclip -selection clipboard"
 alias yt-dl='youtube-dl --extract-audio --audio-format mp3 -o "%(title)s.%(ext)s"'
 
