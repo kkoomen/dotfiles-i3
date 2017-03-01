@@ -3,7 +3,7 @@ allow_bold = false
 audible_bell = false
 clickable_url = true
 dynamic_title = true
-font = Liberation Mono 9
+font = Liberation Mono 8
 fullscreen = true
 geometry = 640x480
 icon_name = terminal
@@ -50,36 +50,36 @@ background = #262626
 
 # Colors from color0 to color254 can be set
 # black
-color0 = #282a2e
-color8 = #656565
+color0 = #262626
+color8 = #666666
 
 # red
-color1 = #a84a4a
-color9 = #e06b67
+color1 = #996140
+color9 = #996140
 
 # green
-color2 = #8da64b
-color10 = #9bb359
+color2 = #799c6a
+color10 = #799c6a
 
 # yellow
-color3 = #f4b350
-color11 = #d1aa68
+color3 = #9d8554
+color11 = #9d8554
 
 # blue
-color4 = #4b7598
-color12 = #588fbd
+color4 = #5f656a
+color12 = #5f656a
 
 # magenta
-color5 = #b35b90
-color13 = #cf7aab
+color5 = #7b6064
+color13 = #7b6064
 
 # cyan
-color6 = #4ba6a6
-color14 = #59b3b3
+color6 = #566e6b
+color14 = #566e6b
 
 # white
-color7 = #959595
-color15 = #b9b9b9
+color7 = #b0b0a2
+color15 = #b0b0a2
 
 [hints]
 #font = Monospace 12
