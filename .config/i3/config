@@ -169,8 +169,9 @@ bar {
 }
 
 # Pulse Audio Controls
-bindsym XF86AudioRaiseVolume exec amixer -q -c 1 set Master 2%+
-bindsym XF86AudioLowerVolume exec amixer -q -c 1 set Master 2%-
+# It will trigger Master (speakers) at card 1 and the usb Headphone at card 2
+bindsym XF86AudioRaiseVolume exec "amixer -q -c 1 set Master 2%+; amixer -q -c 2 set Headphone 2%+;"
+bindsym XF86AudioLowerVolume exec "amixer -q -c 1 set Master 2%-; amixer -q -c 2 set Headphone 2%-;"
 bindsym XF86AudioMute exec "amixer -q -c 1 set Master toggle; amixer -q -c 1 set Speaker unmute; amixer -q -c 1 set Bass\ Speaker unmute; amixer -q -c 1 set Headphone unmute;"
 
 bindsym XF86AudioPlay exec mpc toggle
