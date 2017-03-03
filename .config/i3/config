@@ -11,11 +11,11 @@
 
 set $mod Mod4
 
-set $workspace1 " 1 "
-set $workspace2 " 2 "
-set $workspace3 " 3 "
-set $workspace4 " 4 "
-set $workspace5 " 5 "
+set $workspace1 " 1: term "
+set $workspace2 " 2: chat "
+set $workspace3 " 3: web "
+set $workspace4 " 4: mail "
+set $workspace5 " 5: other "
 set $workspace6 " 6 "
 set $workspace7 " 7 "
 set $workspace8 " 8 "
@@ -125,6 +125,13 @@ for_window [class="mpv"] floating enable
 for_window [class="vlc"] floating enable
 for_window [class="Pavucontrol"] floating enable
 for_window [class=".*"] border pixel 1
+
+# launch certain applications on a specific workspace
+assign [class="Termite"] $workspace1
+assign [class="Slack"] $workspace2
+assign [class="Firefox"] $workspace3
+assign [class="Google-chrome"] $workspace3
+assign [class="Thunderbird"] $workspace4
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
