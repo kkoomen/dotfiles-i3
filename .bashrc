@@ -101,7 +101,7 @@ fi
 shopt -s cdspell
 
 # set PS1 format
-export PS1="[\u:\[$(tput sgr0)\]\[$(tput setaf 5)\]\W\[$(tput sgr0)\]]\[$(tput setaf 3)\]\$(git_branch)\[$(tput sgr0)\]\\$ \[$(tput sgr0)\]"
+export PS1="[\u:\[$(tput sgr0)\]\[$(tput setaf 5)\]\w\[$(tput sgr0)\]]\[$(tput setaf 3)\]\$(git_branch)\[$(tput sgr0)\]\\$ \[$(tput sgr0)\]"
 
 # ssh agent
 if [ ! -S ~/.ssh/ssh_auth_sock ]; then
