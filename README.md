@@ -1,3 +1,8 @@
+# Dotfiles
+
+These are my dotfiles for ubuntu using i3 on a macbook air.<br/>
+Below are some bug fixes and an installation guide for setting everything up.
+
 # Getting started
 
 - `$ git clone --recursive git@github.com:muts/dotfiles-i3.git`
@@ -67,6 +72,12 @@ Firefox
 Thunderbird
 - Go to `Edit → Preferences → Advanced → Config editor`
 - Set `layout.css.devPixelsPerPx` to `1.5`
+
+# Enable keyboard backlight
+
+- `git clone https://github.com/hobarrera/kbdlight && cd kbdlight`
+- `make`
+- `sudo make install`
 
 # Bug fixes
 

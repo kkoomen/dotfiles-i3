@@ -120,7 +120,7 @@ bindsym $mod+Shift+0 move container to workspace $workspace10
 for_window [class="Keepassx"] floating enable
 for_window [class="Lxappearance"] floating enable
 for_window [class="Arandr"] floating enable
-for_window [class="Nautilus"] floating enable
+#for_window [class="Nautilus"] floating enable
 for_window [class="mpv"] floating enable
 for_window [class="vlc"] floating enable
 for_window [class="Pavucontrol"] floating enable
@@ -133,6 +133,7 @@ assign [class="Firefox"] $workspace3
 assign [class="Google-chrome"] $workspace3
 assign [class="Thunderbird"] $workspace4
 assign [class="qBittorrent"] $workspace5
+assign [class="Nautilus"] $workspace5
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -190,6 +191,10 @@ bindsym XF86AudioNext exec mpc next
 # Screen brightness
 bindsym XF86MonBrightnessUp exec xbacklight -inc 20
 bindsym XF86MonBrightnessDown exec xbacklight -dec 20
+
+# backlight
+bindsym XF86KbdBrightnessUp exec kbdlight up 50
+bindsym XF86KbdBrightnessDown exec kbdlight down 50
 
 # Set desktop wallpaper
 exec_always feh --bg-scale /home/koomen/dotfiles/.config/i3/wallpaper.jpg
