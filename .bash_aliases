@@ -33,3 +33,6 @@ alias pb="curl -s -F c=@- https://ptpb.pw/ | grep url"
 # FIREWALL
 alias httpon='sudo ufw allow http'
 alias httpoff='sudo ufw delete allow http'
+
+# DOCKER
+alias ddrush='docker-compose exec --user 82 php drush'
