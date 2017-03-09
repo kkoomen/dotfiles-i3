@@ -36,3 +36,6 @@ alias httpoff='sudo ufw delete allow http'
 
 # DOCKER
 alias ddrush='docker-compose exec --user 82 php drush'
+function ddrush-sqldump {
+  docker-compose exec --user 82 php drush sql-dump --ordered-dump --structure-tables-list='cache_*,watchdog,sessions,flood,history,*_cache' > $1.sql
+}
