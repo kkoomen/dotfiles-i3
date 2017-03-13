@@ -11,11 +11,21 @@ Below are some bug fixes and an installation guide for setting everything up.
 
 # System Installation
 
-packages needed: `sudo apt-get install termite curl wget vim network-manager network-manager-openvpn-gnome py3status python-pip mpv pavucontrol`
+packages needed: `sudo apt-get install termite curl wget vim network-manager network-manager-openvpn-gnome py3status python-pip python-dev python3-dev mpv pavucontrol build-essential cmake`
 
 python packages needed:
 
 - `python-mp2` (required by mpd_status from py3status)
+
+### Setup vim bundles
+
+**YouCompleteMe**
+
+```
+cd ~/.vim/bundle/YouCompleteMe
+git submodule update --init --recursive
+./install.py --all
+```
 
 ### Install i3
 

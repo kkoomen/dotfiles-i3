@@ -208,7 +208,7 @@ noremap > >gv
 noremap < <gv
 
 " Auto Complete
-inoremap <expr> <tab> InsertTabWrapper()
+" inoremap <expr> <tab> InsertTabWrapper()
 
 " avoid saving files like ; and w; and other typos
 cnoremap ww w
