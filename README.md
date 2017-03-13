@@ -19,12 +19,12 @@ python packages needed:
 
 ### Setup vim bundles
 
-**YouCompleteMe**
+##### YouCompleteMe
 
 ```
-cd ~/.vim/bundle/YouCompleteMe
-git submodule update --init --recursive
-./install.py --all
+$ cd ~/.vim/bundle/YouCompleteMe
+$ git submodule update --init --recursive
+$ ./install.py --all
 ```
 
 ### Install i3
