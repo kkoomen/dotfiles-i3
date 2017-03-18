@@ -9,7 +9,7 @@ Below are some bug fixes and an installation guide for setting everything up.
 - `$ cd dotfiles`
 - `$ ./setup.sh`
 
-# System Installation
+# System installation & setup
 
 packages needed: `sudo apt-get install termite curl wget vim network-manager network-manager-openvpn-gnome py3status python-pip python-dev python3-dev mpv pavucontrol build-essential cmake`
 
@@ -17,7 +17,7 @@ python packages needed:
 
 - `python-mp2` (required by mpd_status from py3status)
 
-### Setup vim bundles
+## Setup vim bundles
 
 ##### YouCompleteMe
 
@@ -27,7 +27,7 @@ $ git submodule update --init --recursive
 $ ./install.py --all
 ```
 
-### Install i3
+## Install i3
 
 ```
 $ sudo su -c "echo 'deb http://debian.sur5r.net/i3/ $(lsb_release -c -s) universe' >> /etc/apt/sources.list"
@@ -37,7 +37,7 @@ $ sudo apt-get update
 $ sudo apt-get install i3
 ```
 
-After installing i3, rebooting and enabling i3, install i3-gaps (optional):
+## After installing i3, rebooting and enabling i3, install i3-gaps (optional):
 
 - Install dependencies
 
@@ -64,7 +64,7 @@ $ make
 $ sudo make install
 ```
 
-### Install arc theme
+## Install arc theme
 - `sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/Horst3180/xUbuntu_16.04/ /' >> /etc/apt/sources.list.d/arc-theme.list"`
 - `sudo apt-get update && sudo apt-get install arc-theme`
 
@@ -79,7 +79,7 @@ Installing the icons:
 
 Now open `lxappearance` and set the theme.
 
-### Disable lightdm
+## Disable lightdm
 
 This is so that you get a tty login instead the default ubuntu login
 
@@ -89,7 +89,7 @@ This is so that you get a tty login instead the default ubuntu login
 4. `sudo systemctl enable multi-user.target --force`
 5. `sudo systemctl set-default multi-user.target`
 
-### Set correct DPI
+## Set correct DPI
 
 Add the following to `/etc/profile.d/qt-hidpi.sh`
 
