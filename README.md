@@ -37,6 +37,25 @@ $ sudo apt-get update
 $ sudo apt-get install i3
 ```
 
+After installing i3, rebooting and enabling i3, install i3-gaps (optional):
+
+```
+# clone the repository
+git clone https://www.github.com/Airblader/i3 i3-gaps
+cd i3-gaps
+
+# compile & install
+autoreconf --force --install
+rm -rf build/
+mkdir -p build && cd build/
+
+# Disabling sanitizers is important for release versions!
+# The prefix and sysconfdir are, obviously, dependent on the distribution.
+../configure --prefix=/usr --sysconfdir=/etc --disable-sanitizers
+make
+sudo make install
+```
+
 ### Install arc theme
 - `sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/Horst3180/xUbuntu_16.04/ /' >> /etc/apt/sources.list.d/arc-theme.list"`
 - `sudo apt-get update && sudo apt-get install arc-theme`
