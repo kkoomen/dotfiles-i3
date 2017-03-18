@@ -110,7 +110,7 @@ Thunderbird
 - Go to `Edit → Preferences → Advanced → Config editor`
 - Set `layout.css.devPixelsPerPx` to `1.5`
 
-# Enable keyboard backlight
+## Enable keyboard backlight
 
 - `git clone https://github.com/hobarrera/kbdlight && cd kbdlight`
 - `make`
