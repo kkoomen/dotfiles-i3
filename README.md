@@ -5,7 +5,7 @@ Below are some bug fixes and an installation guide for setting everything up.
 
 # Getting started
 
-- `$ git clone --recursive git@github.com:muts/dotfiles-i3.git`
+- `$ git clone --recursive git@github.com:kkoomen/dotfiles-i3.git`
 - `$ cd dotfiles`
 - `$ ./setup.sh`
 
@@ -39,21 +39,29 @@ $ sudo apt-get install i3
 
 After installing i3, rebooting and enabling i3, install i3-gaps (optional):
 
+- Install dependencies
+
+```
+$ sudo apt-get install libxcb1-dev libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev libxcb-icccm4-dev libyajl-dev libstartup-notification0-dev libxcb-randr0-dev libev-dev libxcb-cursor-dev libxcb-xinerama0-dev libxcb-xkb-dev libxkbcommon-dev libxkbcommon-x11-dev autoconf libxcb-xrm0 libxcb-xrm-dev
+```
+
+- Install i3-gaps itself
+
 ```
 # clone the repository
-git clone https://www.github.com/Airblader/i3 i3-gaps
-cd i3-gaps
+$ git clone https://www.github.com/Airblader/i3 i3-gaps
+$ cd i3-gaps
 
 # compile & install
-autoreconf --force --install
-rm -rf build/
-mkdir -p build && cd build/
+$ autoreconf --force --install
+$ rm -rf build/
+$ mkdir -p build && cd build/
 
 # Disabling sanitizers is important for release versions!
 # The prefix and sysconfdir are, obviously, dependent on the distribution.
-../configure --prefix=/usr --sysconfdir=/etc --disable-sanitizers
-make
-sudo make install
+$ ../configure --prefix=/usr --sysconfdir=/etc --disable-sanitizers
+$ make
+$ sudo make install
 ```
 
 ### Install arc theme
