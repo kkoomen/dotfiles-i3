@@ -28,11 +28,13 @@ font pango:monospace 8
 
 # i3 gaps
 set $gaps_default 10
+set $gaps_increment 5
+
 gaps inner $gaps_default
 gaps outer 0
 
-bindsym $mod+plus  gaps inner current plus 5
-bindsym $mod+minus gaps inner current minus 5
+bindsym $mod+plus  gaps inner current plus $gaps_increment
+bindsym $mod+minus gaps inner current minus $gaps_increment
 bindsym $mod+0 gaps inner current set $gaps_default
 
 # This will disable all gaps (outer and inner) on the workspace
