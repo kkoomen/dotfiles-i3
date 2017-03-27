@@ -17,5 +17,6 @@ xset s off
 
 xrandr --dpi 180
 
+fluxgui &
 nm-applet &
 exec i3

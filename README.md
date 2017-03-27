@@ -116,6 +116,18 @@ Thunderbird
 - `make`
 - `sudo make install`
 
+## Flux
+
+> F.lux changes your computer display’s color temperature according to location and time of day. It was designed to reduce eye strain during night-time use and disruption of sleep patterns.
+
+Installation:
+
+```
+$ sudo add-apt-repository ppa:nathan-renniewaldock/flux
+$ sudo apt-get update
+$ sudo apt-get install fluxgui
+```
+
 # Bug fixes
 
 ### Nautilus
