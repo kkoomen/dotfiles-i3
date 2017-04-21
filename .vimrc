@@ -105,10 +105,10 @@ if executable('ag')
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 endif
 
-" indentLine
+" Indentline
 let g:indentLine_char = '|'
 
-" syntastic
+" Syntastic
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -117,6 +117,20 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+
+" Nerd Tree
+autocmd VimEnter * NERDTree               " Open Nerd Tree on vimenter
+autocmd VimEnter * wincmd p               " Focus last accessed buffer
+let g:NERDTreeDirArrowExpandable = '►'
+let g:NERDTreeDirArrowCollapsible = '▼'
+let g:NERDTreeWinSize=50
+let NERDTreeMinimalUI=1
+
+" Close Nerd Tree too when closing the last buffer
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" Nerd Tree Tabs
+let g:nerdtree_tabs_open_on_console_startup = 1
 
 " --------------------------------------------
 "
@@ -200,8 +214,11 @@ noremap <Leader>m :%s/\r//g<cr>
 " map ; to : for simplicity
 noremap ; :
 
-" Close buffer
-nnoremap Q :bw<cr>
+" Close buffer (use without nerdtree)
+"nnoremap Q :bw<cr>
+
+" Close buffer (use with nerdtree)
+nnoremap Q :bp<cr>:bd #<cr>
 
 " Make selection stay
 noremap > >gv
