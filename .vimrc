@@ -95,6 +95,9 @@ let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.tpl,*.twig,*.htm,*.blade.ph
 let g:username = "Kim Koomen"
 let g:email = 'koomen@protonail.com'
 
+" vim-jsx
+let g:jsx_ext_required = 0
+
 " ctrlp
 let g:ctrlp_use_caching  = 0
 let g:ctrlp_regexp = 0

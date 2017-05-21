@@ -47,3 +47,13 @@
     path = .vim/bundle/vim-nerdtree-tabs
     url = https://github.com/jistr/vim-nerdtree-tabs
     branch = master
+
+[submodule "vim-javascript"]
+    path = .vim/bundle/vim-jsx
+    url = https://github.com/mxw/vim-jsx
+    branch = master
+
+[submodule "vim-jsx"]
+    path = .vim/bundle/vim-javascript
+    url = https://github.com/pangloss/vim-javascript
+    branch = master
