@@ -16,7 +16,7 @@ alias poweroff='sudo poweroff'
 
 # NETWORK
 alias xip='curl icanhazip.com'
-alias lip="ip addr show | grep -E 'inet' | grep -m 1 global | cut -d \  -f6 | cut -d '/' -f1"
+alias lip="ifconfig | grep -A 1 'wlp3s0' | tail -1 | cut -d ':' -f 2 | cut -d ' ' -f 1"
 alias listports="ss -tln | awk '{print $4}'"
 
 # DOTFILES
@@ -35,7 +35,7 @@ alias httpon='sudo ufw allow http'
 alias httpoff='sudo ufw delete allow http'
 
 # DOCKER
-alias ddrush='docker-compose exec --user 82 php drush'
+alias ddrush='docker-compose exec php drush'
 function ddrush-sqldump {
-  docker-compose exec --user 82 php drush sql-dump --ordered-dump --structure-tables-list='cache_*,watchdog,sessions,flood,history,*_cache' > $1
+  docker-compose exec php drush sql-dump --ordered-dump --structure-tables-list='cache_*,watchdog,sessions,flood,history,*_cache' > $1
 }
