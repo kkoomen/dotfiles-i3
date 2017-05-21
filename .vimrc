@@ -123,7 +123,7 @@ autocmd VimEnter * NERDTree               " Open Nerd Tree on vimenter
 autocmd VimEnter * wincmd p               " Focus last accessed buffer
 let g:NERDTreeDirArrowExpandable = '►'
 let g:NERDTreeDirArrowCollapsible = '▼'
-let g:NERDTreeWinSize=50
+let g:NERDTreeWinSize=40
 let NERDTreeMinimalUI=1
 
 " Close Nerd Tree too when closing the last buffer
