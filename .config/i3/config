@@ -146,6 +146,8 @@ for_window [class=".*"] border pixel 1
 # launch certain applications on a specific workspace
 assign [class="Termite"] $workspace1
 assign [class="Slack"] $workspace2
+assign [class="Skype"] $workspace2
+assign [class="telegram"] $workspace2
 assign [class="Firefox"] $workspace3
 assign [class="Google-chrome"] $workspace3
 assign [class="Thunderbird"] $workspace4
