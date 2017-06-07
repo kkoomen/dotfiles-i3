@@ -122,8 +122,8 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 " Nerd Tree
-autocmd VimEnter * NERDTree               " Open Nerd Tree on vimenter
-autocmd VimEnter * wincmd p               " Focus last accessed buffer
+"autocmd VimEnter * NERDTree               " Open Nerd Tree on vimenter
+"autocmd VimEnter * wincmd p               " Focus last accessed buffer
 let g:NERDTreeDirArrowExpandable = '►'
 let g:NERDTreeDirArrowCollapsible = '▼'
 let g:NERDTreeWinSize=40
@@ -133,7 +133,7 @@ let NERDTreeMinimalUI=1
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " Nerd Tree Tabs
-let g:nerdtree_tabs_open_on_console_startup = 1
+"let g:nerdtree_tabs_open_on_console_startup = 1
 
 " --------------------------------------------
 "
@@ -218,10 +218,10 @@ noremap <Leader>m :%s/\r//g<cr>
 noremap ; :
 
 " Close buffer (use without nerdtree)
-"nnoremap Q :bw<cr>
+nnoremap Q :bw<cr>
 
 " Close buffer (use with nerdtree)
-nnoremap Q :bp<cr>:bd #<cr>
+" nnoremap Q :bp<cr>:bd #<cr>
 
 " Make selection stay
 noremap > >gv

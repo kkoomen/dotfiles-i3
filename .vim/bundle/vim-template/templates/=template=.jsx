@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-
 class %FILE% extends Component {
   constructor(props: any) {
     super(props)
@@ -8,7 +7,7 @@ class %FILE% extends Component {
 
   render() {
     return (
-      %HERE%
+      <div className="%FILE%">%HERE%</div>
     );
   }
 }
