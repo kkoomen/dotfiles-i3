@@ -89,6 +89,12 @@ This is so that you get a tty login instead the default ubuntu login
 4. `sudo systemctl enable multi-user.target --force`
 5. `sudo systemctl set-default multi-user.target`
 
+## Notifications
+
+1. `sudo apt-get install xfce4-notifyd`
+2. `sudo mv /usr/share/dbus-1/services/org.freedesktop.Notifications.service /usr/share/dbus-1/services/org.freedesktop.Notifications.service.disabled`
+3. `reboot`
+
 ## Set correct DPI
 
 Add the following to `/etc/profile.d/qt-hidpi.sh`
