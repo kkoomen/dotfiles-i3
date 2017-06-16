@@ -11,7 +11,7 @@ Below are some bug fixes and an installation guide for setting everything up.
 
 # System installation & setup
 
-packages needed: `sudo apt-get install termite curl wget vim network-manager network-manager-openvpn-gnome py3status python-pip python-dev python3-dev mpv ncmpcpp pavucontrol build-essential cmake`
+packages needed: `sudo apt-get install termite curl wget vim network-manager network-manager-openvpn-gnome py3status python-pip python-dev python3-dev mpv ncmpcpp pavucontrol build-essential cmake xfce4-notifyd`
 
 python packages needed:
 
