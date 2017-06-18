@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
-sudo add-apt-repository ppa:atareao/telegram
-sudo apt-get update
-sudo apt-get install telegram
+curl -L https://telegram.org/dl/desktop/linux > telegram.tar.xz
+extract telegram.tar.xz
+mv Telegram /opt/
+sudo ln -s /opt/Telegram/Telegram /usr/local/bin/telegram
+rm telegram.tar.xz

@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+sudo cp ../../bin/* /usr/local/bin
 sudo pip install --upgrade youtube_dl
 sh ../arc_theme_install.sh
 sh ../flux_install.sh
