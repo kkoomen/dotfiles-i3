@@ -14,11 +14,10 @@ $ cd dotfiles/
 
 Run the following scripts:
 
-- `sh ./scripts/install/install_1.sh`
+- `sh ./scripts/install/install_1.sh` (setting up i3)
   - Reboot and login using i3
-- `sh ./scripts/install/install_2.sh`
-- `sh ./scripts/install/install_3.sh` (optional)
-  - Install extra programs such as apache2, docker etc.
+- `sh ./scripts/install/install_2.sh` (setting up env)
+- `sh ./scripts/install/install_3.sh` (apache2, docker etc)
 
 You can update symbolic links with the `./update.sh` script.
 
