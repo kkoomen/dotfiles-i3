@@ -8,7 +8,7 @@ Below are some bug fixes and an installation guide for setting everything up.
 Start off by cloning:
 
 ```
-$ git clone git@github.com:kkoomen/dotfiles.git
+$ git clone --recursive git@github.com:kkoomen/dotfiles.git
 $ cd dotfiles/
 ```
 
