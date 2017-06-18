@@ -3,85 +3,29 @@
 These are my dotfiles for ubuntu using i3 on a macbook air.<br/>
 Below are some bug fixes and an installation guide for setting everything up.
 
-# Getting started
+# Installation
 
-- `$ git clone --recursive git@github.com:kkoomen/dotfiles-i3.git`
-- `$ cd dotfiles`
-- `$ ./setup.sh`
-
-# System installation & setup
-
-packages needed: `sudo apt-get install termite curl wget vim network-manager network-manager-openvpn-gnome py3status python-pip python-dev python3-dev mpv ncmpcpp pavucontrol build-essential cmake xfce4-notifyd`
-
-python packages needed:
-
-- `python-mp2` (required by mpd_status from py3status)
-
-## Setup vim bundles
-
-##### YouCompleteMe
+Start off by cloning:
 
 ```
-$ cd ~/.vim/bundle/YouCompleteMe
-$ git submodule update --init --recursive
-$ ./install.py --all
+$ git clone git@github.com:kkoomen/dotfiles.git
+$ cd dotfiles/
 ```
 
-## Install i3
+Run the following scripts:
 
-```
-$ sudo su -c "echo 'deb http://debian.sur5r.net/i3/ $(lsb_release -c -s) universe' >> /etc/apt/sources.list"
-$ sudo apt-get update
-$ sudo apt-get --allow-unauthenticated install sur5r-keyring
-$ sudo apt-get update
-$ sudo apt-get install i3
-```
+- `./install_1.sh`
+  - Reboot and login using i3
+- `./install_2.sh`
+- `./install_3.sh` (optional)
+  - Install extra programs such as apache2, docker etc.
 
-## After installing i3, rebooting and enabling i3, install i3-gaps (optional):
+You can update symbolic links with the `./update.sh` script.
 
-- Install dependencies
+##### Disable lightdm
 
-```
-$ sudo apt-get install libxcb1-dev libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev libxcb-icccm4-dev libyajl-dev libstartup-notification0-dev libxcb-randr0-dev libev-dev libxcb-cursor-dev libxcb-xinerama0-dev libxcb-xkb-dev libxkbcommon-dev libxkbcommon-x11-dev autoconf libxcb-xrm0 libxcb-xrm-dev
-```
-
-- Install i3-gaps itself
-
-```
-# clone the repository
-$ git clone https://www.github.com/Airblader/i3 i3-gaps
-$ cd i3-gaps
-
-# compile & install
-$ autoreconf --force --install
-$ rm -rf build/
-$ mkdir -p build && cd build/
-
-# Disabling sanitizers is important for release versions!
-# The prefix and sysconfdir are, obviously, dependent on the distribution.
-$ ../configure --prefix=/usr --sysconfdir=/etc --disable-sanitizers
-$ make
-$ sudo make install
-```
-
-## Install arc theme
-- `sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/Horst3180/xUbuntu_16.04/ /' >> /etc/apt/sources.list.d/arc-theme.list"`
-- `sudo apt-get update && sudo apt-get install arc-theme`
-
-You’ll also need to import the repo’s key to quieten any command-line errors:
-- `wget http://download.opensuse.org/repositories/home:Horst3180/xUbuntu_16.04/Release.key`
-- `sudo apt-key add - < Release.key && rm Release.key`
-
-Installing the icons:
-- `git clone https://github.com/horst3180/arc-icon-theme --depth 1 && cd arc-icon-theme`
-- `./autogen.sh --prefix=/usr`
-- `sudo make install`
-
-Now open `lxappearance` and set the theme.
-
-## Disable lightdm
-
-This is so that you get a tty login instead the default ubuntu login
+This is so that you get a tty login instead the default ubuntu login. You have to
+do this to run ~/.xinitrc and other files on startup.
 
 1. `sudo vim /etc/default/grub`
 2. change `GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"` to `GRUB_CMDLINE_LINUX_DEFAULT="text"`.
@@ -89,15 +33,9 @@ This is so that you get a tty login instead the default ubuntu login
 4. `sudo systemctl enable multi-user.target --force`
 5. `sudo systemctl set-default multi-user.target`
 
-## Notifications
+##### Set correct DPI
 
-1. `sudo apt-get install xfce4-notifyd`
-2. `sudo mv /usr/share/dbus-1/services/org.freedesktop.Notifications.service /usr/share/dbus-1/services/org.freedesktop.Notifications.service.disabled`
-3. `reboot`
-
-## Set correct DPI
-
-Add the following to `/etc/profile.d/qt-hidpi.sh`
+Add the following to `/etc/profile.d/qt-hidpi.sh` **ONLY** if you disabled lightdm
 
 ```sh
 export QT_AUTO_SCREEN_SCALE_FACTOR=0
@@ -116,29 +54,13 @@ Thunderbird
 - Go to `Edit → Preferences → Advanced → Config editor`
 - Set `layout.css.devPixelsPerPx` to `1.5`
 
-## Enable keyboard backlight
+# Troubleshooting
 
-- `git clone https://github.com/hobarrera/kbdlight && cd kbdlight`
-- `make`
-- `sudo make install`
+- GPG error: The following signatures couldn't be verified because the public key
+is not available
 
-## Flux
-
-> F.lux changes your computer display’s color temperature according to location and time of day. It was designed to reduce eye strain during night-time use and disruption of sleep patterns.
-
-Installation:
-
-```
-$ sudo add-apt-repository ppa:nathan-renniewaldock/flux
+Replace `<key>` with the key you got in the error.
+`
+$ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys <key>
 $ sudo apt-get update
-$ sudo apt-get install fluxgui
-```
-
-# Bug fixes
-
-### Nautilus
-
-Nautilus opens on default two windows. The nautilus window and a second desktop window (wtf?) so get rid of
-the desktop window with the following command:
-
-`$ gsettings set org.gnome.desktop.background show-desktop-icons false`
+`

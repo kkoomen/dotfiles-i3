@@ -28,6 +28,7 @@ FILES=(
   .ncmpcpp/config
   .ssh/id_rsa.pub
   .config/mpv/mpv.conf
+  .npmrc
   .gitconfig
 
   # directories to symlink
