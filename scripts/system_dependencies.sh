@@ -13,9 +13,6 @@ sudo pip install py3status
 # mpd support for the i3 statusbar
 sudo easy_install python-mpd2
 
-# install youtube-dl
-sudo pip install --upgrade youtube_dl
-
 # disable mpd service and run it as normal user by putting it in ~/.xinitrc
 sudo service mpd stop
 sudo systemctl disable mpd
