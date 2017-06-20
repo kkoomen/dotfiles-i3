@@ -2,4 +2,4 @@
 
 cd ~/.vim/bundle/YouCompleteMe
 git submodule update --init --recursive
-./install.py --all
+./install.py --clang-completer --tern-completer
