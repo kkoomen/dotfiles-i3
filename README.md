@@ -55,8 +55,7 @@ Thunderbird
 
 # Troubleshooting
 
-##### GPG error: The following signatures couldn't be verified because the public key
-is not available
+##### GPG error: The following signatures couldn't be verified because the public key is not available
 
 Replace `<key>` with the key you got in the error.
 `
