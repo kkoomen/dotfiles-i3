@@ -55,7 +55,7 @@ Thunderbird
 
 # Troubleshooting
 
-- GPG error: The following signatures couldn't be verified because the public key
+##### GPG error: The following signatures couldn't be verified because the public key
 is not available
 
 Replace `<key>` with the key you got in the error.
@@ -64,7 +64,7 @@ $ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys <key>
 $ sudo apt-get update
 `
 
-- xbacklight not adjusting screen brightness
+##### xbacklight not adjusting screen brightness
 
 Copy the following contents into `/usr/share/X11/xorg.conf.d/20-intel.conf`:
 
