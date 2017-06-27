@@ -82,6 +82,10 @@ set undolevels=1000                 " How many undos
 set undoreload=10000                " number of lines to save for undo
 set history=500                     " sets how many lines of history VIM has to remember
 
+" handle swap files
+set directory=~/.vim/swap,~/tmp,.
+set noswapfile
+
 " --------------------------------------------
 "
 "   plugins
