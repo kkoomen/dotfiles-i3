@@ -73,7 +73,7 @@ set termencoding=utf-8
 set fileencoding=utf-8
 
 " Delete trailing white space on save
-autocmd BufWritePre * :call DeleteTrailingWS()
+autocmd BufWritePre * :call DeleteSpacing()
 
 " persistent undo history
 set undofile                        " Save undo's after file closes
@@ -145,6 +145,31 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 "   Functions
 "
 " --------------------------------------------
+
+" A wrapper function to restore the cursor position, window position,
+" and last search after running a command.
+function! Preserve(command)
+  " Save the last search
+  let last_search=@/
+  " Save the current cursor position
+  let save_cursor = getpos(".")
+  " Save the window position
+  normal H
+  let save_window = getpos(".")
+  call setpos('.', save_cursor)
+
+  " Do the business:
+  execute a:command
+
+  " Restore the last_search
+  let @/=last_search
+  " Restore the window position
+  call setpos('.', save_window)
+  normal zt
+  " Restore the cursor position
+  call setpos('.', save_cursor)
+endfunction
+
 " Indent if we're at the beginning of a line. Else, do completion.
 function! InsertTabWrapper()
   let col = col('.') - 1
@@ -155,11 +180,18 @@ function! InsertTabWrapper()
   endif
 endfunction
 
-" Delete trailing whitespaces at the end of each line.
-func! DeleteTrailingWS()
+func! DeleteSpacing()
+  let cursor_pos = getpos(".")
+
+  " Delete trailing whitespaces at the end of each line.
   exe "normal mz"
   %s/\s\+$//ge
   exe "normal `z"
+
+  " Remove duplicate lines within the current file
+  :call Preserve("%!cat -s")
+
+  " Convert remaining tabs to spaces
   %retab!
 endfunc
 
@@ -239,11 +271,8 @@ noremap < <gv
 cnoremap ww w
 
 cnoremap w; w
-cnoremap W; w
 cnoremap w: w
-cnoremap W: w
 
 cnoremap x; x
-cnoremap X; x
 cnoremap x: x
-cnoremap X: x
+
