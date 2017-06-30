@@ -188,9 +188,6 @@ func! DeleteSpacing()
   %s/\s\+$//ge
   exe "normal `z"
 
-  " Remove duplicate lines within the current file
-  :call Preserve("%!cat -s")
-
   " Convert remaining tabs to spaces
   %retab!
 endfunc
@@ -269,6 +266,7 @@ noremap < <gv
 
 " avoid saving files like ; and w; and other typos
 cnoremap ww w
+cnoremap W w
 
 cnoremap w; w
 cnoremap w: w

@@ -64,7 +64,7 @@ $ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys <key>
 $ sudo apt-get update
 ```
 
-##### xbacklight not adjusting screen brightness
+##### xbacklight does not adjust screen brightness
 
 Copy the following contents into `/usr/share/X11/xorg.conf.d/20-intel.conf`:
 
@@ -78,3 +78,14 @@ EndSection
 ```
 
 The above settings can be checked with `ls /sys/class/backlight/`.
+
+##### Laptop automatically wakes up from suspend after 3~5 seconds
+
+Put this in `/etc/rc.local` before `exit 0`:<br/>
+```
+echo XHC1 > /proc/acpi/wakeup # <--- Add this line
+exit 0
+```
+
+Note that `XHC1` may vary for your system. It worked for me. If this ain't working
+then try to disable USB types.
