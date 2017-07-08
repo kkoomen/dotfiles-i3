@@ -1,4 +1,11 @@
 #!/usr/bin/env bash
+#
+# This file is used to install environment related applications.
+# We install enable keyboard backlight, we set the correct mousepad settings,
+# set the default notification service and do some bug fixes that ubuntu doesn't
+# do by default.
+#
+# Besides that we copy our dotfiles to our home directory.
 
 sudo cp ../../bin/* /usr/local/bin
 sudo pip install --upgrade youtube_dl

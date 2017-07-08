@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+#
+# This file is used to install the system dependencies along with i3 and i3 gaps.
 
 sh ../system_dependencies.sh
 echo "Installed system dependencies"
