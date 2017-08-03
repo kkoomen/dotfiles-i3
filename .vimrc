@@ -20,8 +20,10 @@ set ttyfast              " indicates a fast terminal connection
 set lazyredraw           " will buffer screen updates instead of updating all the time
 set clipboard=unnamed    " enable clipboard
 set autoread             " Set to auto read when a file is changed from the outside
+set nospell              " Disable spellcheck on default
 set so=7                 " minimal number of screen lines to keep above and below the cursor when scrolling
 set colorcolumn=80       " highlight the 80th column
+set tw=80                " Set a max text width
 
 " Search
 set ignorecase           " case insensitive
@@ -34,8 +36,11 @@ set smartindent          " autoindent when starting a new line
 set expandtab            " replace tabs with spaces
 set shiftwidth=2         " spaces for autoindenting
 set smarttab             " <BS> removes shiftwidth worth of spaces
-set softtabstop=2        " spaces for editing, e.g. <Tab> or <BS>
+set softtabstop=2        " spaces for editing, e.g. <Tab> or <BS> and this is a very long te
 set tabstop=2            " spaces for <Tab>
+
+" Keeps the visual textwidth but doesn't add new line in insert mode.
+autocmd FileType * set formatoptions-=t
 
 " Wildmenu
 set wildmenu
@@ -95,6 +100,9 @@ set noswapfile
 " HTML Close Tag
 let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.tpl,*.twig,*.htm,*.blade.php,*.jsx,*.pug"
 
+" auto-pairs
+let g:AutoPairsMultilineClose = 0
+
 " Templating
 let g:username = "Kim Koomen"
 let g:email = 'koomen@protonail.com'
@@ -103,11 +111,11 @@ let g:email = 'koomen@protonail.com'
 let g:jsx_ext_required = 0
 
 " ctrlp
-let g:ctrlp_use_caching  = 0
+let g:ctrlp_use_caching = 0
 let g:ctrlp_regexp = 0
 let g:ctrlp_by_filename = 1
-let g:ctrlp_max_depth=40
-let g:ctrlp_max_files=0
+let g:ctrlp_max_depth = 40
+let g:ctrlp_max_files = 0
 if executable('ag')
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 endif
@@ -196,7 +204,6 @@ autocmd BufNewFile,BufRead *.php,*.theme set ft=php
 autocmd BufNewFile,BufRead *.blade.php set ft=blade.php
 autocmd BufNewFile,BufRead *.js,*.json set ft=javascript
 autocmd BufNewFile,BufRead *.pug set ft=jade
-autocmd BufNewFile,BufRead *.md set ft=markdown spell
 autocmd BufNewFile,BufRead *.bash_* set ft=sh
 autocmd BufNewFile,BufRead *.ts set ft=typescript
 
@@ -238,7 +245,7 @@ noremap > >gv
 noremap < <gv
 
 " Auto Complete
-" inoremap <expr> <tab> InsertTabWrapper()
+inoremap <expr> <tab> InsertTabWrapper()
 
 " avoid saving files like ; and w; and other typos
 cnoremap ww w

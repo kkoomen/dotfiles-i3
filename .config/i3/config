@@ -141,6 +141,7 @@ for_window [class="Arandr"] floating enable
 for_window [class="mpv"] floating enable
 for_window [class="vlc"] floating enable
 for_window [class="Pavucontrol"] floating enable
+for_window [class="Anki"] floating enable
 for_window [class=".*"] border pixel 1
 
 # launch certain applications on a specific workspace
@@ -150,6 +151,7 @@ assign [class="Skype"] $workspace2
 assign [class="TelegramDesktop"] $workspace2
 assign [class="Firefox"] $workspace3
 assign [class="Google-chrome"] $workspace3
+assign [class="Chromium-browser"] $workspace3
 assign [class="Thunderbird"] $workspace4
 assign [class="qBittorrent"] $workspace5
 assign [class="Nautilus"] $workspace5
