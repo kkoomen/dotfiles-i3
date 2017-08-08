@@ -39,8 +39,9 @@ set smarttab             " <BS> removes shiftwidth worth of spaces
 set softtabstop=2        " spaces for editing, e.g. <Tab> or <BS> and this is a very long te
 set tabstop=2            " spaces for <Tab>
 
-" Keeps the visual textwidth but doesn't add new line in insert mode.
+" Keeps the visual textwidth but doesn't add new line in insert mode when passing the 'tw' value.
 autocmd FileType * set formatoptions-=t
+autocmd FileType .* set formatoptions-=t
 
 " Wildmenu
 set wildmenu
@@ -248,9 +249,6 @@ noremap < <gv
 inoremap <expr> <tab> InsertTabWrapper()
 
 " avoid saving files like ; and w; and other typos
-cnoremap ww w
-cnoremap W w
-
 cnoremap w; w
 cnoremap w: w
 
