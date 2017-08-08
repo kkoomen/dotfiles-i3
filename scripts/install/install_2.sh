@@ -15,5 +15,6 @@ bash ../keyboard_backlight.sh
 bash ../mousepad_setup.sh
 bash ../vim_bundles_install.sh
 bash ../xfce4_notifications_enable.sh
+bash ../touchpad.sh
 bash ../bug_fixes.sh
 bash ../../update.sh
