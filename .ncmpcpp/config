@@ -305,11 +305,11 @@ centered_cursor = "no"
 ## Note: You can specify third character which will
 ## be used to build 'empty' part of progressbar.
 ##
-progressbar_look = "─╼─"
+#progressbar_look = "─╼─"
 # progressbar_look = "⠒⠒⠒"
 #progressbar_look = "___"
 # progressbar_look = "___"
-# progressbar_look = "▉▉▉"
+ progressbar_look = "▉▉▉"
 #
 progressbar_boldness = "no"
 #progressbar_elapsed_boldness = "no"
