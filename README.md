@@ -63,22 +63,6 @@ Replace `<key>` with the key you got in the error.
 $ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys <key>
 $ sudo apt-get update
 ```
-
-##### xbacklight does not adjust screen brightness
-
-Copy the following contents into `/usr/share/X11/xorg.conf.d/20-intel.conf`:
-
-```
-Section "Device"
-        Identifier  "card0"
-        Driver      "intel"
-        Option      "Backlight"  "intel_backlight"
-        BusID       "PCI:0:2:0"
-EndSection
-```
-
-The above settings can be checked with `ls /sys/class/backlight/`.
-
 ##### Laptop automatically wakes up from suspend after 3~5 seconds
 
 Put this in `/etc/rc.local` before `exit 0`:<br/>
