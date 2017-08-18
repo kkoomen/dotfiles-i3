@@ -11,8 +11,13 @@ esac
 # base variable exporting
 export EDITOR=vim
 export TERM=xterm-256color
-export BROWSER=firefox
 export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
+
+if [ -e /usr/local/bin/chrome ]; then
+  export BROWSER=chrome
+else
+  export BROWSER=firefox
+fi
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options

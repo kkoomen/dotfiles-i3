@@ -33,6 +33,7 @@ FILES=(
 
   # directories to symlink
   .vim/
+  .screenlayout/
 )
 
 # files that must exist

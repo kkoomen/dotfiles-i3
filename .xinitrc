@@ -15,8 +15,6 @@ xset r rate 220 65
 xset -dpms
 xset s off
 
-xrandr --dpi 180
-
 mpd &
 fluxgui &
 nm-applet &
