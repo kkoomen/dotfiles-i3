@@ -43,6 +43,9 @@ set tabstop=2            " spaces for <Tab>
 autocmd FileType * set formatoptions-=t
 autocmd FileType .* set formatoptions-=t
 
+" Make our custom aliases available within a non-interactive vim.
+let $BASH_ENV = "~/.bash_aliases"
+
 " Wildmenu
 set wildmenu
 set wildmode=list:longest,full
