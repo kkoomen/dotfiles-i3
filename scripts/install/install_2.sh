@@ -13,12 +13,10 @@ sudo pip install --upgrade youtube_dl
 bash ../arc_theme_install.sh
 bash ../flux_install.sh
 bash ../keyboard_backlight.sh
-bash ../mousepad_setup.sh
 bash ../vim_bundles_install.sh
 bash ../xfce4_notifications_enable.sh
 bash ../font_awesome_install.sh
-bash ../font_awesome_install.sh
 bash ../google_chrome_install.sh
-bash ../touchpad.sh
+#bash ../touchpad.sh
 bash ../bug_fixes.sh
 bash ../../update.sh
