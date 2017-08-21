@@ -27,7 +27,7 @@ This is so that you get a tty login instead the default ubuntu login. You have t
 do this to run ~/.xinitrc and other files on startup.
 
 1. `sudo vim /etc/default/grub`
-2. change `GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"` to `GRUB_CMDLINE_LINUX_DEFAULT="text"`.
+2. change `GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"` to `GRUB_CMDLINE_LINUX_DEFAULT="text intel_idle.max_cstate=1"`.
 3. run `sudo update-grub`.
 4. `sudo systemctl enable multi-user.target --force`
 5. `sudo systemctl set-default multi-user.target`
@@ -61,6 +61,33 @@ clean install you might want to add the following to `~/.config/Trolltech.conf`:
 ```
 [Qt]
 style=GTK
+```
+
+##### Backlight
+
+In the `bin/` folder there's a brightness script that adjusts your screen
+brightness. We need the make it writable for all users.
+
+```
+$ sudo su -
+$ chmod 0666 /sys/devices/pci0000:00/0000:00:02.0/drm/card0/card0-eDP-1/intel_backlight/brightness
+```
+
+##### Keyboard settings
+
+On default, ubuntu uses `libinput` for touchpad, keyboard and touchscreen
+settings. These are located in `/usr/share/X11/xorg.conf.d/90-libinput.conf`.
+
+To disable horizontal scrolling (which I have on always), put the following
+under the touchpad-section:
+
+```
+Section "InputClass"
+        Identifier "libinput touchpad catchall"
+        ...
+        Option "HorizontalScrolling" "false"
+        ...
+EndSection
 ```
 
 # Troubleshooting
