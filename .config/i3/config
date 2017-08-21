@@ -39,7 +39,7 @@ bindsym $mod+0 gaps inner current set $gaps_default
 
 # This will disable all gaps (outer and inner) on the workspace
 # whenever only one container is on the current workspace.
-# smart gaps on
+# smart_gaps on
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -85,7 +85,7 @@ bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+space floating toggle
+# bindsym $mod+space floating toggle
 
 # change focus between tiling / floating windows
 #bindsym $mod+space focus mode_toggle
