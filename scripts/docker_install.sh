@@ -12,7 +12,7 @@ sudo true
 # sudo apt-get install lxc-docker -y
 
 # Alternatively you can use the official docker install script
-wget -qO- https://get.docker.com/ | sh
+# wget -qO- https://get.docker.com/ | sh
 
 # Install docker-compose
 COMPOSE_VERSION=`git ls-remote https://github.com/docker/compose | grep refs/tags | grep -oP "[0-9]+\.[0-9][0-9]+\.[0-9]+$" | tail -n 1`
