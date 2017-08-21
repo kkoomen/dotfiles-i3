@@ -3,7 +3,8 @@
 sudo apt-get install curl wget vim vim-gtk network-manager network-manager-openvpn-gnome \
   python-pip python-dev python3-dev python-setuptools mpv mpd mpc ncmpcpp \
   pavucontrol build-essential cmake xfce4-notifyd vlc lxappearance keepassx inxi \
-  rofi feh arandr qbittorrent filezilla tree weechat scrot xclip p7zip-full dconf-editor
+  rofi feh arandr qbittorrent filezilla tree weechat scrot xclip p7zip-full dconf-editor \
+  ibus-anthy ibus-pinyin
 
 # install pip3
 sudo easy_install3 pip
