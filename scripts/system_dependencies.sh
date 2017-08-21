@@ -1,13 +1,10 @@
 #!/usr/bin/env bash
 
 sudo apt-get install curl wget vim vim-gtk network-manager network-manager-openvpn-gnome \
-  python-pip python-dev python3-dev python-setuptools mpv mpd mpc ncmpcpp \
+  python-pip python3-pip python-dev python3-dev python-setuptools mpv mpd mpc ncmpcpp \
   pavucontrol build-essential cmake xfce4-notifyd vlc lxappearance keepassx inxi \
   rofi feh arandr qbittorrent filezilla tree weechat scrot xclip unrar p7zip-full \
   dconf-editor ibus-anthy ibus-pinyin
-
-# install pip3
-sudo easy_install3 pip
 
 # py3status for i3 statusbar
 sudo pip install py3status
