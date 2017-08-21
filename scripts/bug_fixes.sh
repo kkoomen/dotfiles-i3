@@ -7,6 +7,7 @@ gsettings set org.gnome.desktop.background show-desktop-icons false
 # nautilus custom configuration
 gsettings set org.gnome.nautilus.preferences default-folder-viewer 'list-view'
 gsettings set org.gnome.nautilus.preferences show-hidden-files true
+gsettings set org.gtk.Settings.FileChooser show-hidden true
 gsettings set org.gnome.nautilus.desktop network-icon-visible true
 gsettings set org.gnome.nautilus.desktop trash-icon-visible true
 gsettings set org.gnome.nautilus.desktop volumes-visible true
