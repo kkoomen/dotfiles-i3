@@ -8,4 +8,4 @@ bash ../apache2_install.sh
 bash ../telegram_install.sh
 bash ../slack_install.sh
 bash ../nodejs_npm_install.sh
-bash ../docker_install.sh
+#bash ../docker_install.sh
