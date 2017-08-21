@@ -26,6 +26,7 @@ FILES=(
   .weechat/buffers.conf
   .mpd/mpd.conf
   .ncmpcpp/config
+  .ssh/config
   .ssh/id_rsa.pub
   .config/mpv/mpv.conf
   .npmrc
@@ -94,5 +95,8 @@ for file in "${FILES[@]}"; do
   printf "[Setup] Creating symlink to ${ORANGE}~/$symlink_file${NC} in home directory.\n"
   ln -s $DOTFILES_DIR/$symlink_file ~/$symlink_file
 done
+
+# permissions
+chmod 400 ~/.ssh/id_rsa
 
 echo "[Setup] done."

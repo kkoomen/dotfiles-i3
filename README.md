@@ -53,6 +53,16 @@ Thunderbird
 - Go to `Edit → Preferences → Advanced → Config editor`
 - Set `layout.css.devPixelsPerPx` to `1.5`
 
+##### QT style inherit from GTK
+
+This should already be fixed in the `scripts/bug_fixes.sh`, but when you have a
+clean install you might want to add the following to `~/.config/Trolltech.conf`:
+
+```
+[Qt]
+style=GTK
+```
+
 # Troubleshooting
 
 ##### GPG error: The following signatures couldn't be verified because the public key is not available
