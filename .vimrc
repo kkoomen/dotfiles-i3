@@ -104,7 +104,7 @@ set nobackup
 " --------------------------------------------
 
 " HTML Close Tag
-let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.tpl,*.twig,*.htm,*.blade.php,*.jsx,*.pug"
+let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.tpl,*.twig,*.htm,*.blade.php,,*.pug"
 
 " auto-pairs
 let g:AutoPairsMultilineClose = 0
