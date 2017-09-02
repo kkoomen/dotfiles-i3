@@ -93,7 +93,9 @@ set history=500                     " sets how many lines of history VIM has to 
 
 " handle swap files
 set directory=~/.vim/swap,~/tmp,.
+set backupdir=~/.vim/backup,~/tmp,.
 set noswapfile
+set nobackup
 
 " --------------------------------------------
 "
@@ -121,7 +123,7 @@ let g:ctrlp_by_filename = 1
 let g:ctrlp_max_depth = 40
 let g:ctrlp_max_files = 0
 if executable('ag')
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -- -g ""'
 endif
 
 " Indentline

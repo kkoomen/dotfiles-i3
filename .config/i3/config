@@ -85,7 +85,7 @@ bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
-# bindsym $mod+space floating toggle
+bindsym $mod+space floating toggle
 
 # change focus between tiling / floating windows
 #bindsym $mod+space focus mode_toggle
@@ -199,9 +199,12 @@ bar {
 
 # Pulse Audio Controls
 # It will trigger Master (speakers) at card 1 and the usb Headphone at card 2
-bindsym XF86AudioRaiseVolume exec "amixer -q -c 1 set Master 2%+; amixer -q -c 2 set Headphone 2%+;"
-bindsym XF86AudioLowerVolume exec "amixer -q -c 1 set Master 2%-; amixer -q -c 2 set Headphone 2%-;"
-bindsym XF86AudioMute exec "amixer -q -c 1 set Master toggle; amixer -q -c 1 set Speaker unmute; amixer -q -c 1 set Bass\ Speaker unmute; amixer -q -c 1 set Headphone unmute;"
+#bindsym XF86AudioRaiseVolume exec "amixer -q -c 1 set Master 2%+; amixer -q -c 2 set Headphone 2%+;"
+#bindsym XF86AudioLowerVolume exec "amixer -q -c 1 set Master 2%-; amixer -q -c 2 set Headphone 2%-;"
+#bindsym XF86AudioMute exec "amixer -q -c 1 set Master toggle; amixer -q -c 1 set Speaker unmute; amixer -q -c 1 set Bass\ Speaker unmute; amixer -q -c 1 set Headphone unmute;"
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +2%; exec pactl set-sink-mute @DEFAULT_SINK@ 0
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -2%; exec pactl set-sink-mute @DEFAULT_SINK@ 0
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 bindsym XF86AudioPlay exec mpc toggle
 bindsym XF86AudioStop exec mpc stop
@@ -209,8 +212,8 @@ bindsym XF86AudioPrev exec mpc prev
 bindsym XF86AudioNext exec mpc next
 
 # Screen brightness
-bindsym XF86MonBrightnessUp exec brightness +10
-bindsym XF86MonBrightnessDown exec brightness -10
+#bindsym XF86MonBrightnessUp exec brightness +10
+#bindsym XF86MonBrightnessDown exec brightness -10
 
 # backlight
 bindsym XF86KbdBrightnessUp exec kbdlight up 50
