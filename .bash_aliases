@@ -11,6 +11,7 @@ alias pcinfo='inxi -Fx'
 alias calc='bc -l'
 alias cb="xclip -selection clipboard"
 alias yt-dl='youtube-dl --extract-audio --audio-format mp3 -o "%(title)s.%(ext)s"'
+alias make-tar='tar -czvf'
 
 alias hibernate='sudo pm-hibernate'
 alias reboot='sudo reboot'
@@ -38,6 +39,7 @@ alias httpoff='sudo ufw delete allow http'
 
 # DOCKER
 alias ddrush='docker-compose exec php drush'
+
 function ddrush-sqldump {
   docker-compose exec php drush sql-dump --result-file --gzip --structure-tables-key=common
 }
