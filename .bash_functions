@@ -1,3 +1,5 @@
+shopt -s expand_aliases
+
 function editorconfig-init {
     if [[ -f .editorconfig ]]; then
         echo "[ERROR] .editorconfig config already exists in $(pwd)"

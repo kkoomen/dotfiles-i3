@@ -475,7 +475,7 @@ endif
 hi! link NonText GruvboxBg2
 hi! link SpecialKey GruvboxBg2
 
-call s:HL('Visual',    s:none,  s:bg3, s:invert_selection)
+call s:HL('Visual',    s:yellow,  s:bg1, s:invert_selection)
 hi! link VisualNOS Visual
 
 call s:HL('Search',    s:yellow, s:bg0, s:inverse)

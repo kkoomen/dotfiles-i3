@@ -39,7 +39,8 @@ set smarttab             " <BS> removes shiftwidth worth of spaces
 set softtabstop=2        " spaces for editing, e.g. <Tab> or <BS> and this is a very long te
 set tabstop=2            " spaces for <Tab>
 
-" Keeps the visual textwidth but doesn't add new line in insert mode when passing the 'tw' value.
+" Keeps the visual textwidth but doesn't add new line in insert mode when
+" passing the 'tw' value.
 autocmd FileType * set formatoptions-=t
 autocmd FileType .* set formatoptions-=t
 
@@ -49,6 +50,7 @@ let $BASH_ENV = "~/.bash_aliases"
 " Wildmenu
 set wildmenu
 set wildmode=list:longest,full
+set wildignore+=.gitkeep
 set wildignore+=.hg,.git,.svn
 set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg
 set wildignore+=*.exe,*.dll
@@ -81,8 +83,8 @@ set encoding=utf-8
 set termencoding=utf-8
 set fileencoding=utf-8
 
-" Delete trailing white space on save
-autocmd BufWritePre * :call DeleteSpacing()
+" Delete white space when saving a file
+autocmd BufWritePre * :call DeleteWhiteSpace()
 
 " persistent undo history
 set undofile                        " Save undo's after file closes
@@ -104,7 +106,7 @@ set nobackup
 " --------------------------------------------
 
 " HTML Close Tag
-let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.tpl,*.twig,*.htm,*.blade.php,,*.pug"
+let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.tpl,*.twig,*.htm,*.blade.php,*.pug,*.jsx"
 
 " auto-pairs
 let g:AutoPairsMultilineClose = 0
@@ -115,16 +117,6 @@ let g:email = 'koomen@protonail.com'
 
 " vim-jsx
 let g:jsx_ext_required = 0
-
-" ctrlp
-let g:ctrlp_use_caching = 0
-let g:ctrlp_regexp = 0
-let g:ctrlp_by_filename = 1
-let g:ctrlp_max_depth = 40
-let g:ctrlp_max_files = 0
-if executable('ag')
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -- -g ""'
-endif
 
 " Indentline
 let g:indentLine_char = '|'
@@ -138,21 +130,33 @@ let g:syntastic_javascript_checkers=['eslint']
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+let g:syntastic_check_on_wq = 1
 
-" Nerd Tree
-"autocmd VimEnter * NERDTree               " Open Nerd Tree on vimenter
-"autocmd VimEnter * wincmd p               " Focus last accessed buffer
-let g:NERDTreeDirArrowExpandable = '►'
-let g:NERDTreeDirArrowCollapsible = '▼'
-let g:NERDTreeWinSize=40
-let NERDTreeMinimalUI=1
+" Emmet
+let g:user_emmet_leader_key='<C-f>'
 
-" Close Nerd Tree too when closing the last buffer
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" CtrlP
+let g:ctrlp_use_caching = 0
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\.git$\|\.hg$\|\.svn$\|data\|log\|tmp$\|node_modules\|bower_components',
+  \ 'file': '\.exe$\|\.swp$\|\.swo$\|\.jpg$\|\.bmp$\|\.gif$\|\.png$\|\.jpeg$\|\.dll$\|\.exe$\|\.zip$\|\.tar\.gz$\|\.tar\.bz2$\|\.rar$\|\.tar\.xz$'
+  \ }
 
-" Nerd Tree Tabs
-"let g:nerdtree_tabs_open_on_console_startup = 1
+" https://github.com/FelikZ/ctrlp-py-matcher
+let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+
+" Use git and use the .gitignore file to also exclude those files.
+"
+" NOTE: If you use the g:ctrlp_user_command you can't use g:ctrlp_custom_ignore, since
+" you determine the ignored files with your user command.
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+
+set wildignore+=.gitkeep
+set wildignore+=.hg,.git,.svn
+set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg
+set wildignore+=*.exe,*.dll
+set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
+set wildignore+=node_modules/*,bower_components/*
 
 " --------------------------------------------
 "
@@ -170,7 +174,7 @@ function! InsertTabWrapper()
   endif
 endfunction
 
-func! DeleteSpacing()
+func! DeleteWhiteSpace()
   let cursor_pos = getpos(".")
 
   " Delete trailing whitespaces at the end of each line.
@@ -209,9 +213,7 @@ autocmd BufReadPost * :call LastEditPosition()
 autocmd BufNewFile,BufRead *.php,*.theme set ft=php
 autocmd BufNewFile,BufRead *.blade.php set ft=blade.php
 autocmd BufNewFile,BufRead *.js,*.json set ft=javascript
-autocmd BufNewFile,BufRead *.pug set ft=jade
 autocmd BufNewFile,BufRead *.bash_* set ft=sh
-autocmd BufNewFile,BufRead *.ts set ft=typescript
 
 " system clipboard pasting
 nnoremap <Leader>y :call system('xclip', @0)<cr>
@@ -240,17 +242,14 @@ noremap <Leader>m :%s/\r//g<cr>
 " map ; to : for simplicity
 noremap ; :
 
-" Close buffer (use without nerdtree)
+" Close buffer
 nnoremap Q :bw<cr>
-
-" Close buffer (use with nerdtree)
-" nnoremap Q :bp<cr>:bd #<cr>
 
 " Make selection stay
 noremap > >gv
 noremap < <gv
 
-" Auto Complete
+" Auto complete
 inoremap <expr> <tab> InsertTabWrapper()
 
 " avoid saving files like ; and w; and other typos
@@ -259,4 +258,3 @@ cnoremap w: w
 
 cnoremap x; x
 cnoremap x: x
-

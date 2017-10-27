@@ -1,74 +1,47 @@
-[submodule "ack"]
-    path = .vim/bundle/ack.vim
-    url = https://github.com/mileszs/ack.vim
-    branch = master
-
-[submodule "ctrlp"]
-    path = .vim/bundle/ctrlp.vim
-    url = https://github.com/ctrlpvim/ctrlp.vim
-    branch = master
-
 [submodule "editorconfig-vim"]
     path = .vim/bundle/editorconfig-vim
     url = https://github.com/editorconfig/editorconfig-vim
-    branch = master
 
 [submodule "indentLine"]
     path = .vim/bundle/indentLine
     url = https://github.com/Yggdroot/indentLine
-    branch = master
 
 [submodule "vim-buftabline"]
     path = .vim/bundle/vim-buftabline
     url = https://github.com/ap/vim-buftabline
-    branch = master
 
 [submodule "vim-tabular"]
     path = .vim/bundle/tabular
     url = https://github.com/godlygeek/tabular
-    branch = master
 
 [submodule "vim-syntastic"]
     path = .vim/bundle/vim-syntastic
     url = https://github.com/vim-syntastic/syntastic
-    branch = master
-
-[submodule "YouCompleteMe"]
-    path = .vim/bundle/YouCompleteMe
-    url = https://github.com/Valloric/YouCompleteMe
-    branch = master
-
-[submodule "nerdtree"]
-    path = .vim/bundle/nerdtree
-    url = https://github.com/scrooloose/nerdtree
-    branch = master
-
-[submodule "vim-nerdtree-tabs"]
-    path = .vim/bundle/vim-nerdtree-tabs
-    url = https://github.com/jistr/vim-nerdtree-tabs
-    branch = master
 
 [submodule "vim-javascript"]
     path = .vim/bundle/vim-jsx
     url = https://github.com/mxw/vim-jsx
-    branch = master
 
 [submodule "vim-jsx"]
     path = .vim/bundle/vim-javascript
     url = https://github.com/pangloss/vim-javascript
-    branch = master
+
 [submodule "ctrlp-py-matcher"]
-	path = .vim/bundle/ctrlp-py-matcher
-	url = https://github.com/FelikZ/ctrlp-py-matcher
+  path = .vim/bundle/ctrlp-py-matcher
+  url = https://github.com/FelikZ/ctrlp-py-matcher
+
 [submodule ".vim/bundle/vim-snippets"]
-	path = .vim/bundle/vim-snippets
-	url = https://github.com/honza/vim-snippets
+  path = .vim/bundle/vim-snippets
+  url = https://github.com/honza/vim-snippets
+
 [submodule ".vim/bundle/ultisnips"]
-	path = .vim/bundle/ultisnips
-	url = https://github.com/SirVer/ultisnips
+  path = .vim/bundle/ultisnips
+  url = https://github.com/SirVer/ultisnips
+
 [submodule ".vim/bundle/emmet-vim"]
-	path = .vim/bundle/emmet-vim
-	url = https://github.com/mattn/emmet-vim
+  path = .vim/bundle/emmet-vim
+  url = https://github.com/mattn/emmet-vim
+
 [submodule ".vim/bundle/ctrlp.vim"]
-	path = .vim/bundle/ctrlp.vim
-	url = https://github.com/kien/ctrlp.vim
+  path = .vim/bundle/ctrlp.vim
+  url = https://github.com/kien/ctrlp.vim
