@@ -6,7 +6,7 @@ alias mkdir='mkdir -pv'
 alias vi='vim'
 alias ls='ls -l --color=auto'
 alias sl='ls'
-alias tree='tree -C'
+alias tree='tree -C -h'
 alias pcinfo='inxi -Fx'
 alias calc='bc -l'
 alias cb="xclip -selection clipboard"
@@ -38,8 +38,28 @@ alias httpon='sudo ufw allow http'
 alias httpoff='sudo ufw delete allow http'
 
 # DOCKER
-alias ddrush='docker-compose exec php drush'
+function ddrush {
+  # If we don't receive any version, we can assume this project is drupal 8 that
+  # uses drupal lightning skeleton, so we change directory in docroot/ and run
+  # drush from there.
+  drupal_version=$(docker-compose exec php drush st --format=list drupal_version | cut -d '.' -f 1)
+
+  if [[ "$drupal_version" -eq "" ]] || [[ "${drupal_version:0:1}" -eq "8" ]]; then
+    docker-compose exec php bash -c "cd docroot && drush ${@}"
+  else
+    docker-compose exec php drush ${@}
+  fi
+}
 
 function ddrush-sqldump {
-  docker-compose exec php drush sql-dump --result-file --gzip --structure-tables-key=common
+  # If we don't receive any version, we can assume this project is drupal 8 that
+  # uses drupal lightning skeleton, so we change directory in docroot/ and run
+  # an "drush sql-dump" from there.
+  drupal_version=$(docker-compose exec php drush st --format=list drupal_version | cut -d '.' -f 1)
+
+  if [[ "$drupal_version" -eq "" ]] || [[ "${drupal_version:0:1}" -eq "8" ]]; then
+    docker-compose exec php bash -c "cd docroot && drush sql-dump --result-file --gzip --structure-tables-key=common"
+  else
+    docker-compose exec php drush sql-dump --result-file --gzip --structure-tables-key=common
+  fi
 }
