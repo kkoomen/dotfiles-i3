@@ -68,7 +68,6 @@ let python_highlight_space_errors = 0
 set background=dark
 let g:gruvbox_bold = 0
 let g:gruvbox_termcolors=16
-let g:gruvbox_hls_cursor="green"
 let g:gruvbox_invert_selection=0
 colorscheme gruvbox
 
@@ -83,7 +82,8 @@ set encoding=utf-8
 set termencoding=utf-8
 set fileencoding=utf-8
 
-" Delete white space when saving a file
+" Delete trailing white space when saving a file.
+" Also, trigger a retab on the whole file to convert tabs to spaces
 autocmd BufWritePre * :call DeleteWhiteSpace()
 
 " persistent undo history
@@ -98,65 +98,6 @@ set directory=~/.vim/swap,~/tmp,.
 set backupdir=~/.vim/backup,~/tmp,.
 set noswapfile
 set nobackup
-
-" --------------------------------------------
-"
-"   plugins
-"
-" --------------------------------------------
-
-" HTML Close Tag
-let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.tpl,*.twig,*.htm,*.blade.php,*.pug,*.jsx"
-
-" auto-pairs
-let g:AutoPairsMultilineClose = 0
-
-" Templating
-let g:username = "Kim Koomen"
-let g:email = 'koomen@protonail.com'
-
-" vim-jsx
-let g:jsx_ext_required = 0
-
-" Indentline
-let g:indentLine_char = '|'
-
-" Syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_javascript_checkers=['eslint']
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 1
-
-" Emmet
-let g:user_emmet_leader_key='<C-f>'
-
-" CtrlP
-let g:ctrlp_use_caching = 0
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\.git$\|\.hg$\|\.svn$\|data\|log\|tmp$\|node_modules\|bower_components',
-  \ 'file': '\.exe$\|\.swp$\|\.swo$\|\.jpg$\|\.bmp$\|\.gif$\|\.png$\|\.jpeg$\|\.dll$\|\.exe$\|\.zip$\|\.tar\.gz$\|\.tar\.bz2$\|\.rar$\|\.tar\.xz$'
-  \ }
-
-" https://github.com/FelikZ/ctrlp-py-matcher
-let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
-
-" Use git and use the .gitignore file to also exclude those files.
-"
-" NOTE: If you use the g:ctrlp_user_command you can't use g:ctrlp_custom_ignore, since
-" you determine the ignored files with your user command.
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
-
-set wildignore+=.gitkeep
-set wildignore+=.hg,.git,.svn
-set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg
-set wildignore+=*.exe,*.dll
-set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
-set wildignore+=node_modules/*,bower_components/*
 
 " --------------------------------------------
 "
@@ -250,7 +191,7 @@ noremap > >gv
 noremap < <gv
 
 " Auto complete
-inoremap <expr> <tab> InsertTabWrapper()
+"inoremap <expr> <tab> InsertTabWrapper()
 
 " avoid saving files like ; and w; and other typos
 cnoremap w; w
@@ -258,3 +199,64 @@ cnoremap w: w
 
 cnoremap x; x
 cnoremap x: x
+
+
+" --------------------------------------------
+"
+"   plugins
+"
+" --------------------------------------------
+
+" HTML Close Tag
+let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.tpl,*.twig,*.htm,*.blade.php,*.pug,*.jsx"
+
+" auto-pairs
+let g:AutoPairsMultilineClose = 0
+
+" Templating
+let g:username = "Kim Koomen"
+let g:email = 'koomen@protonail.com'
+
+" vim-jsx
+let g:jsx_ext_required = 0
+
+" Indentline
+let g:indentLine_char = '|'
+
+" Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_javascript_checkers=['eslint']
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 1
+
+" Neocomplete + Ultisnips (prereq: VimCompleteLikeAModernEditor)
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_smart_case = 1
+let g:neocomplete#enable_auto_select = 1
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+" Emmet
+let g:user_emmet_leader_key='<C-f>'
+
+" CtrlP
+let g:ctrlp_use_caching = 0
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\.git$\|\.hg$\|\.svn$\|data\|log\|tmp$\|node_modules\|bower_components',
+  \ 'file': '\.exe$\|\.swp$\|\.swo$\|\.jpg$\|\.bmp$\|\.gif$\|\.png$\|\.jpeg$\|\.dll$\|\.exe$\|\.zip$\|\.tar\.gz$\|\.tar\.bz2$\|\.rar$\|\.tar\.xz$'
+  \ }
+
+" https://github.com/FelikZ/ctrlp-py-matcher
+let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+
+" Use git and use the .gitignore to also exclude those files.
+"
+" NOTE: If you use the g:ctrlp_user_command you can't use g:ctrlp_custom_ignore, since
+" you determine the ignored files with your user command.
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
