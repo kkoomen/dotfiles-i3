@@ -208,7 +208,7 @@ cnoremap x: x
 " --------------------------------------------
 
 " HTML Close Tag
-let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.tpl,*.twig,*.htm,*.blade.php,*.pug,*.jsx"
+let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.tpl,*.twig,*.htm,*.php,*.pug,*.jsx"
 
 " auto-pairs
 let g:AutoPairsMultilineClose = 0
@@ -235,6 +235,7 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 " Neocomplete + Ultisnips (prereq: VimCompleteLikeAModernEditor)
+let g:neocomplete#sources#syntax#min_keyword_length = 3
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#enable_auto_select = 1
