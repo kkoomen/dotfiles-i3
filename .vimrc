@@ -5,7 +5,7 @@
 " --------------------------------------------
 
 " Syntax
-syntax on                " enable syntax highlighting
+syntax on    " enable syntax highlighting
 syntax enable
 
 " General
@@ -87,11 +87,11 @@ set fileencoding=utf-8
 autocmd BufWritePre * :call DeleteWhiteSpace()
 
 " persistent undo history
-set undofile                        " Save undo's after file closes
-set undodir=~/.vim/undo,/tmp        " where to save undo histories
-set undolevels=1000                 " How many undos
-set undoreload=10000                " number of lines to save for undo
-set history=500                     " sets how many lines of history VIM has to remember
+set undofile                 " Save undo's after file closes
+set undodir=~/.vim/undo,/tmp " where to save undo histories
+set undolevels=1000          " How many undos
+set undoreload=10000         " number of lines to save for undo
+set history=500              " sets how many lines of history VIM has to remember
 
 " handle swap files
 set directory=~/.vim/swap,~/tmp,.
