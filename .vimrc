@@ -124,7 +124,7 @@ func! DeleteWhiteSpace()
   exe "normal `z"
 
   " Convert remaining tabs to spaces
-  %retab!
+  %retab
 endfunc
 
 " Set the last edit position
