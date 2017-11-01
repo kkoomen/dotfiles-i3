@@ -36,7 +36,7 @@ set smartindent          " autoindent when starting a new line
 set expandtab            " replace tabs with spaces
 set shiftwidth=2         " spaces for autoindenting
 set smarttab             " <BS> removes shiftwidth worth of spaces
-set softtabstop=2        " spaces for editing, e.g. <Tab> or <BS> and this is a very long
+set softtabstop=2        " spaces for editing, e.g. <Tab> or <BS>
 set tabstop=2            " spaces for <Tab>
 
 " Keeps the visual textwidth but doesn't add new line in insert mode when
