@@ -3,7 +3,9 @@
   name = Kim K
 [alias]
   pom = push origin master
+  pum = pull origin master
   pod = push origin develop
+  pud = pull origin develop
   d = diff
   ds = diff --stat=160,120
   aa = add --all
