@@ -83,8 +83,9 @@ set termencoding=utf-8
 set fileencoding=utf-8
 
 " Delete trailing white space when saving a file.
-" Also, trigger a retab on the whole file to convert tabs to spaces
-autocmd BufWritePre * :call DeleteWhiteSpace()
+" Also, trigger a retab on the whole file to convert tabs to spaces.
+" Clear windows ^M characters.
+autocmd BufWritePre * :call OnBufWritePre()
 
 " persistent undo history
 set undofile                 " Save undo's after file closes
@@ -115,9 +116,7 @@ function! InsertTabWrapper()
   endif
 endfunction
 
-func! DeleteWhiteSpace()
-  let cursor_pos = getpos(".")
-
+function! OnBufWritePre()
   " Delete trailing whitespaces at the end of each line.
   exe "normal mz"
   %s/\s\+$//ge

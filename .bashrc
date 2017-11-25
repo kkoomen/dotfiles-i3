@@ -13,8 +13,8 @@ export EDITOR=vim
 export TERM=xterm-256color
 export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
 
-if [ -e /usr/local/bin/firefox-dev-beta ]; then
-  export BROWSER=firefox-dev-beta
+if [ -e /usr/local/bin/firefox-quantum ]; then
+  export BROWSER=firefox-quantum
 elif [ -e /usr/local/bin/chrome ]; then
   export BROWSER=chrome
 else
