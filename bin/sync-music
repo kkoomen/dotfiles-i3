@@ -1,0 +1,70 @@
+#! /usr/bin/env python3
+# -*- coding: utf-8 -*-
+# vim:fenc=utf-8
+#
+
+"""
+TODO
+"""
+
+import sys
+from os import listdir, remove
+from os.path import isfile, join
+from shutil import copyfile
+
+
+def main(device):
+    MOBILE_MUSIC_DIR = '/media/koomen/phone/Internal shared storage/Music'
+    print('Gathering mobile files from \033[0;31m{}\033[0m'.format(MOBILE_MUSIC_DIR))
+    mobile_files = [
+        file for file in listdir(MOBILE_MUSIC_DIR)
+        if isfile(join(MOBILE_MUSIC_DIR, file)) and file.endswith('.mp3')
+    ]
+
+    MUSIC_DIR = '/home/koomen/Music'
+    print('Gathering desktop files from \033[0;31m{}\033[0m'.format(MUSIC_DIR))
+    files = [
+        file for file in listdir(MUSIC_DIR)
+        if isfile(join(MUSIC_DIR, file)) and file.endswith('.mp3')
+    ]
+
+    if device.lower() == 'desktop':
+        # Copy mobile files to desktop
+        for file in mobile_files:
+            try:
+                files.index(file)
+            except ValueError:
+                print('Copying \033[0;31m{}\033[0m from mobile --> desktop'.format(file))
+                copyfile(
+                    join(MOBILE_MUSIC_DIR, file),
+                    join(MUSIC_DIR, file)
+                )
+
+    elif device.lower() == 'mobile':
+        # Copy new files from desktop to mobile
+        for file in files:
+                try:
+                    mobile_files.index(file)
+                except ValueError:
+                    print('Copying \033[0;31m{}\033[0m from desktop --> mobile'.format(file))
+                    copyfile(
+                        join(MUSIC_DIR, file),
+                        join(MOBILE_MUSIC_DIR, file)
+                    )
+
+        # Delete files that don't exist on desktop, but still on mobile
+        for file in mobile_files:
+            try:
+                files.index(file)
+            except ValueError:
+                print('Removing \033[0;31m{}\033[0m from mobile'.format(file))
+                remove(join(MOBILE_MUSIC_DIR, file))
+
+    print("Done.")
+
+
+if __name__ == '__main__':
+    if len(sys.argv) < 2:
+        sys.exit("Usage: ./sync-music.py <mobile|desktop>")
+
+    main(sys.argv[1])
