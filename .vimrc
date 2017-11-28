@@ -260,3 +260,22 @@ let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 " NOTE: If you use the g:ctrlp_user_command you can't use g:ctrlp_custom_ignore, since
 " you determine the ignored files with your user command.
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+
+" GitGutter
+let g:gitgutter_map_keys = 0
+let g:gitgutter_override_sign_column_highlight = 0
+let g:gitgutter_sign_added = '+'
+let g:gitgutter_sign_modified = '~'
+let g:gitgutter_sign_removed = '-'
+let g:gitgutter_sign_removed_first_line = '^'
+let g:gitgutter_sign_modified_removed = 'M-'
+
+" If you experience a lag, you can trade speed for accuracy
+"let g:gitgutter_realtime = 0
+"let g:gitgutter_eager = 0
+
+" Tags
+" Look for a 'tags' file starting from the cwd up til root level.
+set tags=./tags;/
+map <Leader>] :enew<CR>:exec("tag ".expand("<cword>"))<CR>
+map <Leader>[ :enew <CR>:exec("tag ".expand("<cword>"))<CR>
