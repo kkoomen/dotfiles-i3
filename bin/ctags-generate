@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+usage() {
+  echo "Usage: ctags-generate <type>"
+  echo "Example: ctags-generate drupal"
+  exit 1
+}
+
+# Set ctags as requirement.
+type ctags >/dev/null 2>&1 || { echo >&2 "Error: ctags is not installed, but is require. Aborting."; exit 1; }
+
+if [[ "$1" == "" ]]; then
+  usage
+fi
+
+
+echo "Generating ctags for $1"
+[[ "$1" == "drupal" ]] && ctags --langmap=php:.engine.inc.module.theme.install.php --php-kinds=cdfi --languages=php --recurse --fields=+l
+exit 0
