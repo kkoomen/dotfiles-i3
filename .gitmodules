@@ -69,9 +69,7 @@
 [submodule ".vim/bundle/vim-autoclose"]
   path = .vim/bundle/vim-autoclose
   url = https://github.com/Townk/vim-autoclose
+
 [submodule ".vim/bundle/vim-gitgutter"]
-	path = .vim/bundle/vim-gitgutter
-	url = https://github.com/airblade/vim-gitgutter
-[submodule ".vim/bundle/vim-tags"]
-	path = .vim/bundle/vim-tags
-	url = https://github.com/szw/vim-tags
+  path = .vim/bundle/vim-gitgutter
+  url = https://github.com/airblade/vim-gitgutter

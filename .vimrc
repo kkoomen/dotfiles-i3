@@ -149,11 +149,27 @@ set pastetoggle=<F2>
 " return to last edit position when opening file
 autocmd BufReadPost * :call LastEditPosition()
 
-" some filetype(s)
-autocmd BufNewFile,BufRead *.php,*.theme set ft=php
-autocmd BufNewFile,BufRead *.blade.php set ft=blade.php
-autocmd BufNewFile,BufRead *.js,*.json set ft=javascript
-autocmd BufNewFile,BufRead *.bash_* set ft=sh
+" Filetype(s)
+if has("autocmd")
+  " Drupal *.module and *.install files.
+  augroup module
+    autocmd BufRead,BufNewFile *.blade.php set filetype=php
+    autocmd BufRead,BufNewFile *.theme set filetype=php
+    autocmd BufRead,BufNewFile *.module set filetype=php
+    autocmd BufRead,BufNewFile *.install set filetype=php
+    autocmd BufRead,BufNewFile *.test set filetype=php
+    autocmd BufRead,BufNewFile *.inc set filetype=php
+    autocmd BufRead,BufNewFile *.profile set filetype=php
+    autocmd BufRead,BufNewFile *.view set filetype=php
+  augroup END
+
+  " Bash
+  augroup General
+    autocmd BufNewFile,BufRead *.bash_* set ft=sh
+    autocmd BufRead,BufNewFile *.js set filetype=javascript
+    autocmd BufRead,BufNewFile *.json set filetype=javascript
+  augroup END
+endif
 
 " system clipboard pasting
 nnoremap <Leader>y :call system('xclip', @0)<cr>
@@ -277,5 +293,3 @@ let g:gitgutter_sign_modified_removed = 'M-'
 " Tags
 " Look for a 'tags' file starting from the cwd up til root level.
 set tags=./tags;/
-map <Leader>] :enew<CR>:exec("tag ".expand("<cword>"))<CR>
-map <Leader>[ :enew <CR>:exec("tag ".expand("<cword>"))<CR>
