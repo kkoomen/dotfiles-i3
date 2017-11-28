@@ -722,10 +722,15 @@ let g:niji_light_colours = g:rbpt_colorpairs
 "}}}
 " GitGutter: {{{
 
-hi! link GitGutterAdd GruvboxGreenSign
-hi! link GitGutterChange GruvboxAquaSign
-hi! link GitGutterDelete GruvboxRedSign
-hi! link GitGutterChangeDelete GruvboxAquaSign
+" Remove highlighted sign column for dark theme.
+" Disable the default GruvBox styling, because it adds a background, which we
+" do not want.
+hi! clear SignColumn
+
+"hi! link GitGutterAdd GruvboxGreenSign
+"hi! link GitGutterChange GruvboxAquaSign
+"hi! link GitGutterDelete GruvboxRedSign
+"hi! link GitGutterChangeDelete GruvboxAquaSign
 
 " }}}
 " GitCommit: "{{{
