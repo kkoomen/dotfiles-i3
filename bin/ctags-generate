@@ -14,6 +14,14 @@ if [[ "$1" == "" ]]; then
 fi
 
 
-echo "Generating ctags for $1"
-[[ "$1" == "drupal" ]] && ctags --langmap=php:.engine.inc.module.theme.install.php --php-kinds=cdfi --languages=php --recurse --fields=+l
-exit 0
+if [[ "$1" == "drupal" ]]; then
+  echo "Generating ctags for Drupal project"
+  echo "--langmap=php:.engine.inc.module.theme.install.php" > .gutctags
+  echo "--php-kinds=cdfi" >> .gutctags
+  echo "--languages=php,javascript" >> .gutctags
+  echo "--recurse" >> .gutctags
+  echo "--fields=+l" >> .gutctags
+  exit 0
+else:
+  echo "No option found for $1..."
+fi
