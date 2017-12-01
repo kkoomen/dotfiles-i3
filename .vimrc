@@ -262,7 +262,7 @@ let g:syntastic_php_phpcs_args="--standard=Drupal --extensions=php,module,inc,in
 
 " Neocomplete + Ultisnips (prereq: VimCompleteLikeAModernEditor)
 " --------------------------------------------------------------
-"let g:neocomplete#sources#syntax#min_keyword_length = 3
+let g:neocomplete#sources#syntax#min_keyword_length = 3
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#enable_auto_select = 1
@@ -273,7 +273,8 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 " <CR>: close popup and save indent.
 inoremap <silent> <CR> <C-r>=<SID>neocomplete_pum()<CR>
 function! s:neocomplete_pum()
-  return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
+  "return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
+  return pumvisible() ? "\<C-y>" : "\<CR>"
 endfunction
 
 " <TAB>: completion.
