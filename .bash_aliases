@@ -6,7 +6,7 @@ alias mkdir='mkdir -pv'
 alias vi='vim'
 alias ls='ls -l --color=auto'
 alias sl='ls'
-alias tree='tree -C -h'
+alias tree='tree -C'
 alias pcinfo='inxi -Fx'
 alias calc='bc -l'
 alias cb="xclip -selection clipboard"

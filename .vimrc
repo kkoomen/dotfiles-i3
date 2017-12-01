@@ -164,7 +164,7 @@ if has("autocmd")
   augroup END
 
   " Bash
-  augroup General
+  augroup general
     autocmd BufNewFile,BufRead *.bash_* set ft=sh
     autocmd BufRead,BufNewFile *.js set filetype=javascript
     autocmd BufRead,BufNewFile *.json set filetype=javascript
@@ -223,34 +223,46 @@ cnoremap x: x
 " --------------------------------------------
 
 " HTML Close Tag
+" --------------
 let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.tpl,*.twig,*.htm,*.php,*.pug,*.jsx"
 
 " auto-pairs
+" ----------
 let g:AutoPairsMultilineClose = 0
 
 " Templating
+" ----------
 let g:username = "Kim Koomen"
 let g:email = 'koomen@protonail.com'
 
 " vim-jsx
+" -------
 let g:jsx_ext_required = 0
 
 " Indentline
+" ----------
 let g:indentLine_char = '|'
 
 " Syntastic
+" ---------
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
-let g:syntastic_javascript_checkers=['eslint']
+" general settings
 let g:syntastic_always_populate_loc_list=1
 let g:syntastic_auto_loc_list=1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
+" checkers
+let g:syntastic_javascript_checkers=['eslint']
+let g:syntastic_php_checkers = ['phpcs', 'php']
+let g:syntastic_php_phpcs_args="--standard=Drupal --extensions=php,module,inc,install,test,profile,theme"
+
 " Neocomplete + Ultisnips (prereq: VimCompleteLikeAModernEditor)
-let g:neocomplete#sources#syntax#min_keyword_length = 3
+" --------------------------------------------------------------
+"let g:neocomplete#sources#syntax#min_keyword_length = 3
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#enable_auto_select = 1
@@ -258,10 +270,37 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>neocomplete_pum()<CR>
+function! s:neocomplete_pum()
+  return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
+endfunction
+
+" <TAB>: completion.
+inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+
+" Close popup by <Space>.
+inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
+
+" Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+let g:UltiSnipsSnippetsDir        = '~/.vim/snippets/'
+
 " Emmet
+" -----
 let g:user_emmet_leader_key='<C-f>'
 
 " CtrlP
+" -----
 let g:ctrlp_use_caching = 0
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\.git$\|\.hg$\|\.svn$\|data\|log\|tmp$\|node_modules\|bower_components',
@@ -278,6 +317,7 @@ let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
 " GitGutter
+" ---------
 let g:gitgutter_map_keys = 0
 let g:gitgutter_override_sign_column_highlight = 0
 let g:gitgutter_sign_added = '+'
@@ -291,5 +331,9 @@ let g:gitgutter_sign_modified_removed = 'M-'
 "let g:gitgutter_eager = 0
 
 " Tags
-" Look for a 'tags' file starting from the cwd up til root level.
+" ----
+
+" Look for a 'tags' file starting from the cwd up til root level. This is a
+" fallback, because we use vim-gutentags which will look for a tags-file in a
+" project its root director already by default.
 set tags=./tags;/
