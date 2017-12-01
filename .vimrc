@@ -273,8 +273,8 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 " <CR>: close popup and save indent.
 inoremap <silent> <CR> <C-r>=<SID>neocomplete_pum()<CR>
 function! s:neocomplete_pum()
-  return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
-  "return pumvisible() ? "\<C-y>" : "\<CR>"
+  "return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
+  return pumvisible() ? "\<C-y>" : "\<CR>"
 endfunction
 
 " <TAB>: completion.
