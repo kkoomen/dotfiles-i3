@@ -9,35 +9,34 @@ syntax on    " enable syntax highlighting
 syntax enable
 
 " General
-set completeopt-=preview " dont show preview window
-set hidden               " hide when switching buffers, don't unload
-set mouse=a              " enable mouse in all modes
-set nowrap               " no word wrap
-set number               " show line numbers
-set cursorline           " highlight cursor line
-set title                " use filename in window title
-set ttyfast              " indicates a fast terminal connection
-set lazyredraw           " will buffer screen updates instead of updating all the time
-set clipboard=unnamed    " enable clipboard
-set autoread             " Set to auto read when a file is changed from the outside
-set nospell              " Disable spellcheck on default
-set so=7                 " minimal number of screen lines to keep above and below the cursor when scrolling
-set colorcolumn=80       " highlight the 80th column
-set tw=80                " Set a max text width
+set hidden                                    " hide when switching buffers, don't unload
+set mouse=a                                   " enable mouse in all modes
+set nowrap                                    " no word wrap
+set number                                    " show line numbers
+set cursorline                                " highlight cursor line
+set title                                     " use filename in window title
+set ttyfast                                   " indicates a fast terminal connection
+set lazyredraw                                " will buffer screen updates instead of updating all the time
+set clipboard=unnamed                         " enable clipboard
+set autoread                                  " Set to auto read when a file is changed from the outside
+set nospell                                   " Disable spellcheck on default
+set so=7                                      " minimal number of screen lines to keep above and below the cursor when scrolling
+set colorcolumn=80                            " highlight the 80th column
+set tw=80                                     " Set a max text width
 
 " Search
-set ignorecase           " case insensitive
-set incsearch            " show match as search proceeds
-set hlsearch             " search highlighting
+set ignorecase                                " case insensitive
+set incsearch                                 " show match as search proceeds
+set hlsearch                                  " search highlighting
 
 " Tabs
-set autoindent           " copy indent from previous line
-set smartindent          " autoindent when starting a new line
-set expandtab            " replace tabs with spaces
-set shiftwidth=2         " spaces for autoindenting
-set smarttab             " <BS> removes shiftwidth worth of spaces
-set softtabstop=2        " spaces for editing, e.g. <Tab> or <BS>
-set tabstop=2            " spaces for <Tab>
+set autoindent                                " copy indent from previous line
+set smartindent                               " autoindent when starting a new line
+set expandtab                                 " replace tabs with spaces
+set shiftwidth=2                              " spaces for autoindenting
+set smarttab                                  " <BS> removes shiftwidth worth of spaces
+set softtabstop=2                             " spaces for editing, e.g. <Tab> or <BS>
+set tabstop=2                                 " spaces for <Tab>
 
 " Keeps the visual textwidth but doesn't add new line in insert mode when
 " passing the 'tw' value.
@@ -77,6 +76,14 @@ set nocompatible
 " file detection
 filetype plugin indent on
 
+" Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType php setlocal omnifunc=phpcomplete#CompletePHP
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
 " enable utf8 encoding
 set encoding=utf-8
 set termencoding=utf-8
@@ -84,7 +91,6 @@ set fileencoding=utf-8
 
 " Delete trailing white space when saving a file.
 " Also, trigger a retab on the whole file to convert tabs to spaces.
-" Clear windows ^M characters.
 autocmd BufWritePre * :call OnBufWritePre()
 
 " persistent undo history
@@ -99,6 +105,31 @@ set directory=~/.vim/swap,~/tmp,.
 set backupdir=~/.vim/backup,~/tmp,.
 set noswapfile
 set nobackup
+
+" return to last edit position when opening file
+autocmd BufReadPost * :call LastEditPosition()
+
+" Filetype(s)
+if has("autocmd")
+  " Drupal *.module and *.install files.
+  augroup module
+    autocmd BufRead,BufNewFile *.blade.php set filetype=php
+    autocmd BufRead,BufNewFile *.theme set filetype=php
+    autocmd BufRead,BufNewFile *.module set filetype=php
+    autocmd BufRead,BufNewFile *.install set filetype=php
+    autocmd BufRead,BufNewFile *.test set filetype=php
+    autocmd BufRead,BufNewFile *.inc set filetype=php
+    autocmd BufRead,BufNewFile *.profile set filetype=php
+    autocmd BufRead,BufNewFile *.view set filetype=php
+  augroup END
+
+  " Bash
+  augroup general
+    autocmd BufNewFile,BufRead *.bash_* set ft=sh
+    autocmd BufRead,BufNewFile *.js set filetype=javascript
+    autocmd BufRead,BufNewFile *.json set filetype=javascript
+  augroup END
+endif
 
 " --------------------------------------------
 "
@@ -146,31 +177,6 @@ nnoremap X :bnext<cr>
 " Set pastetoggle
 set pastetoggle=<F2>
 
-" return to last edit position when opening file
-autocmd BufReadPost * :call LastEditPosition()
-
-" Filetype(s)
-if has("autocmd")
-  " Drupal *.module and *.install files.
-  augroup module
-    autocmd BufRead,BufNewFile *.blade.php set filetype=php
-    autocmd BufRead,BufNewFile *.theme set filetype=php
-    autocmd BufRead,BufNewFile *.module set filetype=php
-    autocmd BufRead,BufNewFile *.install set filetype=php
-    autocmd BufRead,BufNewFile *.test set filetype=php
-    autocmd BufRead,BufNewFile *.inc set filetype=php
-    autocmd BufRead,BufNewFile *.profile set filetype=php
-    autocmd BufRead,BufNewFile *.view set filetype=php
-  augroup END
-
-  " Bash
-  augroup general
-    autocmd BufNewFile,BufRead *.bash_* set ft=sh
-    autocmd BufRead,BufNewFile *.js set filetype=javascript
-    autocmd BufRead,BufNewFile *.json set filetype=javascript
-  augroup END
-endif
-
 " system clipboard pasting
 nnoremap <Leader>y :call system('xclip', @0)<cr>
 nnoremap <Leader>p "+p
@@ -206,7 +212,8 @@ noremap > >gv
 noremap < <gv
 
 " Auto complete
-"inoremap <expr> <tab> InsertTabWrapper()
+set completeopt-=preview
+inoremap <expr> <tab> InsertTabWrapper()
 
 " avoid saving files like ; and w; and other typos
 cnoremap w; w
@@ -260,41 +267,12 @@ let g:syntastic_javascript_checkers=['eslint']
 let g:syntastic_php_checkers = ['phpcs', 'php']
 let g:syntastic_php_phpcs_args="--standard=Drupal --extensions=php,module,inc,install,test,profile,theme"
 
-" Neocomplete + Ultisnips (prereq: VimCompleteLikeAModernEditor)
-" --------------------------------------------------------------
-let g:neocomplete#sources#syntax#min_keyword_length = 3
-let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#enable_smart_case = 1
-let g:neocomplete#enable_auto_select = 1
+" Ultisnips
+" ---------
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-
-" <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>neocomplete_pum()<CR>
-function! s:neocomplete_pum()
-  "return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
-  return pumvisible() ? "\<C-y>" : "\<CR>"
-endfunction
-
-" <TAB>: completion.
-inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-
-" <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-
-" Close popup by <Space>.
-inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
-
-" Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-
-let g:UltiSnipsSnippetsDir        = '~/.vim/snippets/'
+let g:UltiSnipsSnippetsDir = '~/.vim/snippets/'
 
 " Emmet
 " -----
@@ -313,8 +291,8 @@ let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 
 " Use git and use the .gitignore to also exclude those files.
 "
-" NOTE: If you use the g:ctrlp_user_command you can't use g:ctrlp_custom_ignore, since
-" you determine the ignored files with your user command.
+" NOTE: If you use the g:ctrlp_user_command you can't use g:ctrlp_custom_ignore,
+" since you determine the ignored files with your user command.
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
 " GitGutter
