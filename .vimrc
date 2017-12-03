@@ -90,12 +90,13 @@ let g:gruvbox_invert_selection=0
 colorscheme gruvbox
 
 " Autocompletion
-" ---------------------------------------------------------------
+" ------------------------------------------------------------------------------
 "  - Append extra characters to the 'iskeyword' for autocompletion.
-"  - Set 'autochdir' so that paths will be autocompleted relative to the current buffer.
+"  - Set 'autochdir' so that paths will be autocompleted relative to the current
+"    buffer.
 "  - Remove preview
 "  - Enable omni completion.
-" ---------------------------------------------------------------
+" ------------------------------------------------------------------------------
 set iskeyword+=-
 set autochdir
 autocmd FileType * setlocal omnifunc=syntaxcomplete#Complete
