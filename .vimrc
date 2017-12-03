@@ -5,48 +5,60 @@
 " --------------------------------------------
 
 " Syntax
+" ------
 syntax on    " enable syntax highlighting
 syntax enable
 
 " General
-set hidden                                    " hide when switching buffers, don't unload
-set mouse=a                                   " enable mouse in all modes
-set nowrap                                    " no word wrap
-set number                                    " show line numbers
-set cursorline                                " highlight cursor line
-set title                                     " use filename in window title
-set ttyfast                                   " indicates a fast terminal connection
-set lazyredraw                                " will buffer screen updates instead of updating all the time
-set clipboard=unnamed                         " enable clipboard
-set autoread                                  " Set to auto read when a file is changed from the outside
-set nospell                                   " Disable spellcheck on default
-set so=7                                      " minimal number of screen lines to keep above and below the cursor when scrolling
-set colorcolumn=80                            " highlight the 80th column
-set tw=80                                     " Set a max text width
+" -------
+set hidden                " Hide when switching buffers, don't unload
+set mouse=a               " Enable mouse in all modes
+set nowrap                " No word wrap
+set number                " Show line numbers
+set cursorline            " Highlight cursor line
+set title                 " Use filename in window title
+set ttyfast               " Indicates a fast terminal connection
+set lazyredraw            " Will buffer screen updates instead of updating all the time
+set clipboard=unnamed     " Enable clipboard
+set autoread              " Set to auto read when a file is changed from the outside
+set nospell               " Disable spellcheck on default
+set so=7                  " Minimal number of screen lines to keep above and below the cursor when scrolling
+set colorcolumn=80        " Highlight the 80th column
+set tw=80                 " Set a max text width
+set nocompatible          " Use vim defaults instead of vi
 
 " Search
-set ignorecase                                " case insensitive
-set incsearch                                 " show match as search proceeds
-set hlsearch                                  " search highlighting
+" ------
+set ignorecase            " Case insensitive
+set incsearch             " Show match as search proceeds
+set hlsearch              " Search highlighting
 
 " Tabs
-set autoindent                                " copy indent from previous line
-set smartindent                               " autoindent when starting a new line
-set expandtab                                 " replace tabs with spaces
-set shiftwidth=2                              " spaces for autoindenting
-set smarttab                                  " <BS> removes shiftwidth worth of spaces
-set softtabstop=2                             " spaces for editing, e.g. <Tab> or <BS>
-set tabstop=2                                 " spaces for <Tab>
+" ----
+set autoindent            " Copy indent from previous line
+set smartindent           " Auto indent when starting a new line
+set expandtab             " Replace tabs with spaces
+set shiftwidth=2          " Spaces for autoindenting
+set smarttab              " <BS> removes shiftwidth worth of spaces
+set softtabstop=2         " Spaces for editing, e.g. <Tab> or <BS>
+set tabstop=2             " Spaces for <Tab>
 
+" Textwidth
+" -----------------------------------------------------------------------
 " Keeps the visual textwidth but doesn't add new line in insert mode when
 " passing the 'tw' value.
+" -----------------------------------------------------------------------
 autocmd FileType * set formatoptions-=t
 autocmd FileType .* set formatoptions-=t
 
+" Expand bash aliases
+" ---------------------------------------------------------------
 " Make our custom aliases available within a non-interactive vim.
+" ---------------------------------------------------------------
 let $BASH_ENV = "~/.bash_aliases"
 
 " Wildmenu
+" --------
 set wildmenu
 set wildmode=list:longest,full
 set wildignore+=.gitkeep
@@ -56,60 +68,80 @@ set wildignore+=*.exe,*.dll
 set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
 set wildignore+=node_modules/*,bower_components/*
 
-" enable pathogen
+" Enable pathogen
+" ---------------
 call pathogen#infect()
 
-" syntax
+" File detection
+" --------------
+filetype plugin indent on
+
+" Syntax
+" ------
 let python_highlight_all = 1
 let python_highlight_space_errors = 0
 
-" color scheme
+" Color scheme
+" ------------
 set background=dark
 let g:gruvbox_bold = 0
 let g:gruvbox_termcolors=16
 let g:gruvbox_invert_selection=0
 colorscheme gruvbox
 
-" use vim defaults instead of vi
-set nocompatible
-
-" file detection
-filetype plugin indent on
-
-" Enable omni completion.
+" Autocompletion
+" ---------------------------------------------------------------
+"  - Append extra characters to the 'iskeyword' for autocompletion.
+"  - Set 'autochdir' so that paths will be autocompleted from the cwd.
+"  - Enable omni completion.
+" ---------------------------------------------------------------
+set iskeyword+=-
+set autochdir
+autocmd FileType * setlocal omnifunc=syntaxcomplete#Complete
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType php setlocal omnifunc=phpcomplete#CompletePHP
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 
-" enable utf8 encoding
+" Tags
+" ---------------------------------------------------------------------------
+" Look for a 'tags' file starting from the cwd up til root level. This is a
+" fallback, because we use vim-gutentags which will look for a tags-file in a
+" project its root directory already by default.
+" ---------------------------------------------------------------------------
+set tags=./tags;/
+
+" UTF8 encoding
+" -------------
 set encoding=utf-8
 set termencoding=utf-8
 set fileencoding=utf-8
 
-" Delete trailing white space when saving a file.
-" Also, trigger a retab on the whole file to convert tabs to spaces.
+" Hooks
+" -----
 autocmd BufWritePre * :call OnBufWritePre()
+autocmd BufReadPost * :call OnBufReadPost()
 
-" persistent undo history
-set undofile                 " Save undo's after file closes
+" Undo history
+" -----------------------
+set undofile                  " Save undo's after file closes
 set undodir=~/.vim/undo,/tmp " where to save undo histories
 set undolevels=1000          " How many undos
 set undoreload=10000         " number of lines to save for undo
 set history=500              " sets how many lines of history VIM has to remember
 
-" handle swap files
+" Swap files
+" ----------
 set directory=~/.vim/swap,~/tmp,.
 set backupdir=~/.vim/backup,~/tmp,.
 set noswapfile
 set nobackup
 
-" return to last edit position when opening file
-autocmd BufReadPost * :call LastEditPosition()
-
-" Filetype(s)
+" Filetypes
+" ---------
 if has("autocmd")
   " Drupal *.module and *.install files.
   augroup module
@@ -158,7 +190,7 @@ function! OnBufWritePre()
 endfunc
 
 " Set the last edit position
-function! LastEditPosition()
+function! OnBufReadPost()
   if line("'\"") > 0 && line("'\"") <= line("$") |
     exe "normal! g`\"" |
   endif
@@ -170,44 +202,58 @@ endfunction
 "
 " --------------------------------------------
 
-" next / previous buffer
+" Buffers
+" ----------------------
 nnoremap Z :bprev<cr>
 nnoremap X :bnext<cr>
+nnoremap Q :bw<cr>
 
 " Set pastetoggle
+" ---------------
 set pastetoggle=<F2>
 
-" system clipboard pasting
+" System clipboard pasting
+" ------------------------
 nnoremap <Leader>y :call system('xclip', @0)<cr>
 nnoremap <Leader>p "+p
 
-" commenting
+" Commenting
+" ----------
 map <C-c> <Leader>cm<cr>
 map <C-x> <Leader>cu<cr>
 map <C-a> <Leader>cs<cr>
 
-" rot13
+" Rot13
+" -----
 nnoremap <silent> <F6> ggg?G<cr>
 
-" space bar un-highligts search
+" Space bar un-highligts search
+" -----------------------------
 noremap <silent> <Space> :silent noh<Bar>echo<CR>
 
+" Saving file as sudo in non-sudo opened file
+" --------------------------------------------------------------------
 " Allow saving of files as sudo when I forgot to start vim using sudo.
+" --------------------------------------------------------------------
 cnoremap w!! w !sudo tee > /dev/null %
 
-" toggle spell check
+" Spell check
+" -----------
 nnoremap <leader>sc :setlocal spell!<cr>
 
-" remove ^M
+" Remove ^M
+" ---------
 noremap <Leader>m :%s/\r//g<cr>
 
-" map ; to : for simplicity
+" Map ; to : for simplicity
+" -------------------------
 noremap ; :
 
-" Close buffer
-nnoremap Q :bw<cr>
 
+" Selection
+" -------------------
 " Make selection stay
+" -------------------
 noremap > >gv
 noremap < <gv
 
@@ -215,7 +261,10 @@ noremap < <gv
 set completeopt-=preview
 inoremap <expr> <tab> InsertTabWrapper()
 
-" avoid saving files like ; and w; and other typos
+" Typo's while saving
+" ------------------------------------------------
+" Avoid saving files like ; and w; and other typos
+" ------------------------------------------------
 cnoremap w; w
 cnoremap w: w
 
@@ -256,13 +305,11 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
-" general settings
 let g:syntastic_always_populate_loc_list=1
 let g:syntastic_auto_loc_list=1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
-" checkers
 let g:syntastic_javascript_checkers=['eslint']
 let g:syntastic_php_checkers = ['phpcs', 'php']
 let g:syntastic_php_phpcs_args="--standard=Drupal --extensions=php,module,inc,install,test,profile,theme"
@@ -290,7 +337,6 @@ let g:ctrlp_custom_ignore = {
 let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 
 " Use git and use the .gitignore to also exclude those files.
-"
 " NOTE: If you use the g:ctrlp_user_command you can't use g:ctrlp_custom_ignore,
 " since you determine the ignored files with your user command.
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
@@ -309,10 +355,12 @@ let g:gitgutter_sign_modified_removed = 'M-'
 "let g:gitgutter_realtime = 0
 "let g:gitgutter_eager = 0
 
-" Tags
-" ----
-
-" Look for a 'tags' file starting from the cwd up til root level. This is a
-" fallback, because we use vim-gutentags which will look for a tags-file in a
-" project its root director already by default.
-set tags=./tags;/
+" Supertab
+" ------------
+let g:SuperTabCrMapping = 0
+let g:SuperTabDefaultCompletionType = 'context'
+let g:SuperTabContextDefaultCompletionType = '<c-x><c-u>'
+autocmd FileType *
+    \ if &omnifunc != '' |
+    \     call SuperTabChain(&omnifunc, '<c-p>') |
+    \ endif
