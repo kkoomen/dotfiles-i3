@@ -59,6 +59,9 @@ class CoreRadio():
                     'uri': download_link
                 })
 
+        if len(results) < 1:
+            sys.exit('No results found for "{}"'.format(keywords))
+
         for index, item in enumerate(results):
             print('[{}] {}'.format(index+1, item['title']));
 
