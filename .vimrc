@@ -302,18 +302,18 @@ let g:indentLine_char = '|'
 
 " Syntastic
 " ---------
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
 
-let g:syntastic_always_populate_loc_list=1
-let g:syntastic_auto_loc_list=1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+"let g:syntastic_always_populate_loc_list=1
+"let g:syntastic_auto_loc_list=1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
 
-let g:syntastic_javascript_checkers=['eslint']
-let g:syntastic_php_checkers = ['phpcs', 'php']
-let g:syntastic_php_phpcs_args="--standard=Drupal --extensions=php,module,inc,install,test,profile,theme"
+"let g:syntastic_javascript_checkers=['eslint']
+"let g:syntastic_php_checkers = ['phpcs', 'php']
+"let g:syntastic_php_phpcs_args="--standard=Drupal --extensions=php,module,inc,install,test,profile,theme"
 
 " Ultisnips
 " ---------
@@ -371,20 +371,3 @@ autocmd FileType *
 " Airline
 " -------
 let g:airline_theme='base16_grayscale'
-"let g:airline#extensions#ale#enabled = 1
-let g:airline#extensions#tabline#enabled = 1
-
-function! LinterStatus() abort
-    let l:counts = ale#statusline#Count(bufnr(''))
-
-    let l:all_errors = l:counts.error + l:counts.style_error
-    let l:all_non_errors = l:counts.total - l:all_errors
-
-    return l:counts.total == 0 ? 'OK' : printf(
-    \   '%dW %dE',
-    \   all_non_errors,
-    \   all_errors
-    \)
-endfunction
-
-set statusline=%{LinterStatus()}
