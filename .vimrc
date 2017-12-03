@@ -94,7 +94,6 @@ colorscheme gruvbox
 "  - Append extra characters to the 'iskeyword' for autocompletion.
 "  - Set 'autochdir' so that paths will be autocompleted relative to the current
 "    buffer.
-"  - Remove preview
 "  - Enable omni completion.
 " ------------------------------------------------------------------------------
 set iskeyword+=-
