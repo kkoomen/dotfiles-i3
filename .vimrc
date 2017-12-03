@@ -93,6 +93,7 @@ colorscheme gruvbox
 " ---------------------------------------------------------------
 "  - Append extra characters to the 'iskeyword' for autocompletion.
 "  - Set 'autochdir' so that paths will be autocompleted from the cwd.
+"  - Remove preview
 "  - Enable omni completion.
 " ---------------------------------------------------------------
 set iskeyword+=-
@@ -258,8 +259,8 @@ noremap > >gv
 noremap < <gv
 
 " Auto complete
-set completeopt-=preview
-inoremap <expr> <tab> InsertTabWrapper()
+" -------------
+"inoremap <expr> <tab> InsertTabWrapper()
 
 " Typo's while saving
 " ------------------------------------------------
