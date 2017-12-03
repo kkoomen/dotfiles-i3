@@ -323,7 +323,9 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:UltiSnipsSnippetsDir = '~/.vim/snippets/'
 
 " Emmet
-" -----
+" -----------------------------------------------------------------------
+"  After the leader key you should always enter a comma to trigger emmet.
+" -----------------------------------------------------------------------
 let g:user_emmet_leader_key='<C-f>'
 
 " CtrlP
