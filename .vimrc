@@ -15,7 +15,7 @@ set hidden                " Hide when switching buffers, don't unload
 set mouse=a               " Enable mouse in all modes
 set nowrap                " No word wrap
 set number                " Show line numbers
-set cursorline            " Highlight cursor line
+set nocursorline          " Disable cursor line (makes vim very slow)
 set title                 " Use filename in window title
 set ttyfast               " Indicates a fast terminal connection
 set lazyredraw            " Will buffer screen updates instead of updating all the time
