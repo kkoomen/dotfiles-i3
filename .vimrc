@@ -317,10 +317,9 @@ let g:indentLine_char = '|'
 
 " Ultisnips
 " ---------
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-let g:UltiSnipsSnippetsDir = '~/.vim/snippets/'
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
 " Emmet
 " -----------------------------------------------------------------------
@@ -362,6 +361,7 @@ let g:gitgutter_sign_modified_removed = 'M-'
 " ------------
 let g:SuperTabCrMapping = 0
 let g:SuperTabDefaultCompletionType = 'context'
+"let g:SuperTabDefaultCompletionType = '<C-n>'
 let g:SuperTabContextDefaultCompletionType = '<c-x><c-u>'
 autocmd FileType *
     \ if &omnifunc != '' |
@@ -371,3 +371,8 @@ autocmd FileType *
 " Airline
 " -------
 let g:airline_theme='base16_grayscale'
+
+" Ale
+" ---
+let g:ale_sign_error = '••'
+let g:ale_sign_warning = '•'
