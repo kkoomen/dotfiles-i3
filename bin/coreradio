@@ -66,9 +66,10 @@ class CoreRadio():
             print('[{}] {}'.format(index+1, item['title']));
 
         try:
-            index = int(input("Enter a number to download: "))
-            album = results[index-1]
-            self.download(album);
+            indexes = [x.strip() for x in input("Enter 1 or more numbers to download (separated by comma): ").split(',')]
+            for index in indexes:
+                album = results[int(index)-1]
+                self.download(album);
         except (IndexError, ValueError):
             sys.exit("[ERROR] You must specify an index")
 
