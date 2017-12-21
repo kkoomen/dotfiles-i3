@@ -1,6 +1,6 @@
 # Dotfiles
 
-These are my dotfiles for ubuntu using i3 on a macbook air.<br/>
+These are my dotfiles for ubuntu using i3 on a macbook pro.<br/>
 Below are some bug fixes and an installation guide for setting everything up.
 
 # Installation

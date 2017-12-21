@@ -97,7 +97,7 @@ colorscheme gruvbox
 "  - Enable omni completion.
 " ------------------------------------------------------------------------------
 set iskeyword+=-
-set autochdir
+autocmd FileType javascript.jsx set autochdir
 autocmd FileType * setlocal omnifunc=syntaxcomplete#Complete
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
