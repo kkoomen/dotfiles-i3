@@ -12,6 +12,7 @@ esac
 export EDITOR=vim
 export TERM=xterm-256color
 export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
+export NODE_ENV="development"
 
 if [ -e /usr/local/bin/firefox-quantum ]; then
   export BROWSER=firefox-quantum

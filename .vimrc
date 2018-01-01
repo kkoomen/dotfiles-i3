@@ -92,18 +92,15 @@ colorscheme gruvbox
 " Autocompletion
 " ------------------------------------------------------------------------------
 "  - Append extra characters to the 'iskeyword' for autocompletion.
-"  - Set 'autochdir' so that paths will be autocompleted relative to the current
-"    buffer.
 "  - Enable omni completion.
 " ------------------------------------------------------------------------------
 set iskeyword+=-
-autocmd FileType javascript.jsx set autochdir
 autocmd FileType * setlocal omnifunc=syntaxcomplete#Complete
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType php setlocal omnifunc=phpcomplete#CompletePHP
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+"autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 

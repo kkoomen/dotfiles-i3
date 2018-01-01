@@ -65,10 +65,6 @@
   path = .vim/bundle/supertab
   url = https://github.com/ervandew/supertab
 
-[submodule ".vim/bundle/lexima.vim"]
-  path = .vim/bundle/lexima.vim
-  url = https://github.com/cohama/lexima.vim
-
 [submodule ".vim/bundle/vim-airline"]
   path = .vim/bundle/vim-airline
   url = https://github.com/vim-airline/vim-airline
@@ -80,3 +76,7 @@
 [submodule ".vim/bundle/ale"]
   path = .vim/bundle/ale
   url = https://github.com/w0rp/ale
+
+[submodule ".vim/bundle/auto-pairs"]
+  path = .vim/bundle/auto-pairs
+  url = https://github.com/jiangmiao/auto-pairs
