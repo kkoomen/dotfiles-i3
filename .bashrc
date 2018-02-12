@@ -14,8 +14,8 @@ export TERM=xterm-256color
 export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
 export NODE_ENV="development"
 
-if [ -e /usr/local/bin/firefox-quantum ]; then
-  export BROWSER=firefox-quantum
+if [ -e /usr/local/bin/firefox ]; then
+  export BROWSER=firefox
 elif [ -e /usr/local/bin/chrome ]; then
   export BROWSER=chrome
 else
@@ -119,4 +119,4 @@ fi
 ssh-add -l > /dev/null || ssh-add
 
 # PATH exporting
-export PATH="$PATH:$HOME/.rvm/bin":"$HOME/.composer/vendor/bin/":"$HOME/go/bin"
+export PATH="$PATH:$HOME/.rvm/bin":"$HOME/.composer/vendor/bin/":"$HOME/go/bin":"$HOME/.cargo/bin"

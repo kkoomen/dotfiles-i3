@@ -14,11 +14,11 @@ test -n "$link" && (printf $link | xclip; printf "\a" && rm "$img") || echo "$re
 if [[ "$link" ]]; then
   echo "Here is your link:" $link
 
-  if [ -e /usr/local/bin/firefox-dev-beta ]; then
-    /usr/local/bin/firefox-dev-beta $link
+  if [ -e /usr/local/bin/firefox ]; then
+    /usr/local/bin/firefox $link
   elif [ -e /usr/local/bin/chrome ]; then
     /usr/local/bin/chrome $link
   else
-    /usr/bin/firefox $link
+    print "No browser found. Link: ${link}"
   fi
 fi
