@@ -100,6 +100,13 @@ Replace `<key>` with the key you got in the error.
 $ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys <key>
 $ sudo apt-get update
 ```
+
+##### Thunderbird error: Missing passphrase
+
+Open `~/.gnupg/gpg-agent.conf` and change `pinentry-program /usr/bin/pinentry`
+to `pinentry-program /usr/bin/pinentry-qt` (or anything else that might work for
+you, but this one worked for me back then).
+
 ##### Laptop automatically wakes up from suspend after 3~5 seconds
 
 Put this in `/etc/rc.local` before `exit 0`:<br/>

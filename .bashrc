@@ -14,7 +14,7 @@ export TERM=xterm-256color
 export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
 export NODE_ENV="development"
 
-if [ -e /usr/local/bin/firefox ]; then
+if [ -e /usr/bin/firefox ]; then
   export BROWSER=firefox
 elif [ -e /usr/local/bin/chrome ]; then
   export BROWSER=chrome
