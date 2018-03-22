@@ -1,1 +1,4 @@
 set completion-ignore-case On
+"\e[A":history-search-backward
+## arrow down
+"\e[B":history-search-forward

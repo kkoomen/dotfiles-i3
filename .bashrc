@@ -119,4 +119,4 @@ fi
 ssh-add -l > /dev/null || ssh-add
 
 # PATH exporting
-export PATH="$PATH:$HOME/.rvm/bin":"$HOME/.composer/vendor/bin/":"$HOME/go/bin":"$HOME/.cargo/bin"
+export PATH="$PATH:$HOME/.rvm/bin":"$HOME/config/.composer/vendor/bin":"$HOME/go/bin":"$HOME/.cargo/bin"

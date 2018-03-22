@@ -63,10 +63,8 @@ set wildmenu
 set wildmode=list:longest,full
 set wildignore+=.gitkeep
 set wildignore+=.hg,.git,.svn
-set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg
 set wildignore+=*.exe,*.dll
 set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
-set wildignore+=node_modules/*,bower_components/*
 
 " Enable pathogen
 " ---------------
@@ -100,9 +98,6 @@ autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType php setlocal omnifunc=phpcomplete#CompletePHP
-"autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 
 " Tags
 " ---------------------------------------------------------------------------
@@ -373,3 +368,25 @@ let g:airline_theme='base16_grayscale'
 " ---
 let g:ale_sign_error = '••'
 let g:ale_sign_warning = '•'
+let g:ale_php_phpcs_standard = 'Drupal'
+
+" Open list of errors when new buffer opens
+let g:ale_open_list = 0
+
+" Unset loclist and enable quickfix list
+let g:ale_set_loclist = 0
+let g:ale_set_quickfix = 1
+
+let g:ale_php_phpcs_standard = 'Drupal'
+let g:ale_linters = {
+      \   'php': ['php', 'phpcs'],
+      \   'javascript': [],
+      \   'jsx': ['stylelint', 'eslint'],
+      \}
+let g:ale_linter_aliases = {'jsx': 'css'}
+
+" Do not lint or fix minified files.
+let g:ale_pattern_options = {
+\ '\.min\.js$': {'ale_linters': [], 'ale_fixers': []},
+\ '\.min\.css$': {'ale_linters': [], 'ale_fixers': []},
+\}
