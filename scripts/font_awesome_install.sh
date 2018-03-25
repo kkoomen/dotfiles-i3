@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
-wget http://fontawesome.io/assets/font-awesome-4.7.0.zip
-unzip font-awesome-4.7.0.zip
-sudo cp font-awesome-4.7.0/fonts/FontAwesome.otf /usr/share/fonts/opentype
-rm -rf font-awesome-4.7.0/ font-awesome-4.7.0.zip
+version="4.7.0"
+filepath="font-awesome-${version}"
+
+wget https://fontawesome.com/v${version}/assets/${filepath}.zip
+unzip ${filepath}.zip
+sudo cp "${filepath}/fonts/FontAwesome.otf" /usr/share/fonts/opentype
+rm -rf ${filepath}/ ${filepath}.zip
