@@ -20,7 +20,7 @@ function editorconfig-init {
     fi
 }
 
-git_branch() {
+function git_branch {
   # Based on: http://stackoverflow.com/a/13003854/170413
   local branch
   if branch=$(git rev-parse --abbrev-ref HEAD 2> /dev/null); then
@@ -33,4 +33,12 @@ git_branch() {
   fi
 
   printf "$git_branch"
+}
+
+function prefix-css {
+  if [[ -x /usr/bin/autoprefixer-cli ]]; then
+    /usr/bin/autoprefixer-cli -o "$2" "$1" -b "> 1%, last 4 versions, IE > 10, iOS > 6, safari > 6, Firefox ESR" > /dev/null 2>&1
+  else
+    echo "No executable: autoprefixer-cli. Install it via [sudo] npm install -g autoprefixer-cli"
+  fi
 }

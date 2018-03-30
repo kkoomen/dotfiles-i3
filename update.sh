@@ -15,7 +15,6 @@ FILES=(
   .bash_functions
   .bash_profile
   .vimrc
-  .inputrc
   .xinitrc
   .Xresources
   .config/gtk-3.0/gtk.css
