@@ -312,6 +312,8 @@ let g:indentLine_char = '|'
 let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+"let g:UltiSnipsSnippetDirectories = ['~/.vim/snippets/UltiSnips', 'UltiSnips']
+let g:UltiSnipsSnippetsDir="~/.vim/UltiSnips"
 
 " Emmet
 " -----------------------------------------------------------------------
@@ -368,7 +370,6 @@ let g:airline_theme='base16_grayscale'
 " ---
 let g:ale_sign_error = '••'
 let g:ale_sign_warning = '•'
-let g:ale_php_phpcs_standard = 'Drupal'
 
 " Open list of errors when new buffer opens
 let g:ale_open_list = 0
