@@ -3,17 +3,6 @@ priority -50
 global !p
 import vim
 
-NORMAL  = 0x1
-DOXYGEN = 0x2
-SPHINX  = 0x3
-GOOGLE  = 0x4
-NUMPY   = 0x5
-JEDI    = 0x6
-
-SINGLE_QUOTES = "'"
-DOUBLE_QUOTES = '"'
-
-
 # Set g:ultisnips_php_scalar_types to 1 if you'd like to enable PHP 7's scalar types for return values
 def isPHPScalarTypesEnabled():
 	isEnabled = vim.eval("get(g:, 'ultisnips_php_scalar_types', 0)") == "1"
@@ -36,7 +25,6 @@ class Arg(object):
 
 def get_args(arglist):
 	args = [Arg(arg) for arg in arglist.split(',') if arg]
-	args = [arg for arg in args if arg.name != 'self']
 
 	return args
 
@@ -56,7 +44,9 @@ def write_function_docstring(t, snip):
 	:param t: The values of the placeholders
 	:param snip: UltiSnips.TextObjects.SnippetUtil object instance
 	"""
-	snip.rv = "\n/**"
+	snip.rv = "/**\n" + snip.mkline('', indent='')
+	snip.rv += ' * ' + t[1] + '\n' + snip.mkline('', indent='')
+	snip.rv += ' *'
 
 	args = get_args(t[2])
 	if args:
@@ -296,7 +286,7 @@ snippet fun "function with docstrings" b
 `!p write_function_docstring(t, snip) `
 function ${1:myFunction}(`!p
 if snip.indent:
-	snip.rv = (", " if len(t[2]) else "")`${2:arg1}) {
+	snip.rv = (", " if len(t[2]) else "")`${2:$arg1}) {
 	${4:${VISUAL}}
 }
 endsnippet
